@@ -1,10 +1,11 @@
 public class Room {
-    private String navn;
-    private String beskrivelse;
-    private String nord;
-    private String syd;
-    private String øst;
-    private String vest;
+    private String name;
+    private String description;
+    private String north;
+    private String south;
+    private String east;
+    private String west;
+
 
     public Room (String navn, String beskrivelse, String nord, String syd, String øst, String vest){
         this.navn= navn;
