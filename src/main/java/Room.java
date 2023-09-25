@@ -7,12 +7,12 @@ public class Room {
     private String west;
 
 
-    public Room (String navn, String beskrivelse, String nord, String syd, String øst, String vest){
-        this.navn= navn;
-        this.beskrivelse =beskrivelse;
-        this.nord =nord;
-        this.syd=syd;
-        this.øst=øst;
-        this.vest=vest;
+    public Room (String name, String description, String north, String south, String east, String west){
+        this.name= name;
+        this.description =description;
+        this.north =north;
+        this.south=south;
+        this.east=east;
+        this.west=west;
     }
 }
