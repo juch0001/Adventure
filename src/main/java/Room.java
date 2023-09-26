@@ -10,7 +10,7 @@ public class Room {
 
 
     public Room (String name, String description){
-        this.name= name;
+        this.name = name;
         this.description =description;
 
     }
@@ -19,7 +19,7 @@ public class Room {
         return name;
     }
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
 
