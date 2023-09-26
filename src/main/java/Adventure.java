@@ -1,5 +1,11 @@
+import java.util.ArrayList;
+
 public class Adventure {
-    public static void main(String[] args) {
+    public ArrayList<Room>rooms;
+
+    public Adventure(){
+        rooms = new ArrayList<>();
+
         //Todo Metoder
         Room room1= new Room("Room 1", "beskrivelse");
         Room room2= new Room("Room 2", "beskrivelse");

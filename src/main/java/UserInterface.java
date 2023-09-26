@@ -1,8 +1,16 @@
 import java.util.Scanner;
 
 public class UserInterface {
+    private Adventure adventure;
+    Scanner scanner;
+
+    public UserInterface(){
+        adventure= new Adventure();
+        scanner=new Scanner(System.in);
+    }
 
     public void startProgram() {
+
             Scanner keyboard = new Scanner(System.in);
 
             String direction = keyboard.nextLine();
@@ -19,7 +27,7 @@ public class UserInterface {
             }
 
             //Todo if_menu
-        if (menu)
+        String menu
 
             switch (direction) {
                 case "Go north" :
