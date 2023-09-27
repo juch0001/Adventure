@@ -1,6 +1,8 @@
 import javax.sound.midi.Soundbank;
 
 public class Adventure {
+    public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
+
 
     private Room current;
 
@@ -88,11 +90,14 @@ public class Adventure {
     }
 
     public void directions(String menu) {
+        String arrow = " "; //For at kunne tilføje pile retning
+
         switch (menu) {
             case "go north":
+                arrow = " ↑ ";
                 String northResult = moveToRoom("go north");
                 if (northResult != null) {
-                    System.out.println("going north");
+                    System.out.println(BLACK_BOLD + "going north" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + getCurrentRoom().getName());
                     System.out.println(getCurrentRoom().getDescription());
                 } else {
@@ -101,9 +106,10 @@ public class Adventure {
                 break;
 
             case "go east":
+                arrow = " → ";
                 String eastResult = moveToRoom("go east");
                 if (eastResult != null) {
-                    System.out.println("going east");
+                    System.out.println(BLACK_BOLD + "going east" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + getCurrentRoom().getName());
                     System.out.println(getCurrentRoom().getDescription());
                 } else {
@@ -111,9 +117,10 @@ public class Adventure {
                 }
                 break;
             case "go south":
+                arrow = " ↓ ";
                 String southResult = moveToRoom("go south");
                 if (southResult != null) {
-                    System.out.println("going south");
+                    System.out.println(BLACK_BOLD + "going south" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + getCurrentRoom().getName());
                     System.out.println(getCurrentRoom().getDescription());
                 } else {
@@ -121,9 +128,10 @@ public class Adventure {
                 }
                 break;
             case "go west":
+                arrow = " ← ";
                 String westResult = moveToRoom("go west");
                 if (westResult != null) {
-                    System.out.println("going west");
+                    System.out.println(BLACK_BOLD + "going west" + arrow + "\u001B[0m");
                     System.out.println("You are now in "+ getCurrentRoom().getName());
                     System.out.println(getCurrentRoom().getDescription());
                 } else {

@@ -1,6 +1,29 @@
+import java.time.Year;
 import java.util.Scanner;
 
 public class UserInterface {
+    public static final String BLUE_BOLD = "\033[1;34m"; //farvekode til blå
+    public static final String BLUE_UNDERLINED = "\033[4;34m"; //blå linje under tekst
+    public static final String MAGENTA_BLACKGROUND = "\033[45m"; //lilla baggrund
+    public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m"; //Gul baggrund
+    public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
+
+    public static void printMouseArt() {
+        String mouseArt =
+
+                        "     _   _        \n" +
+                        "    (q\\_/p)      \n" +
+                        ".-.  |. .|        \n" +
+                        "  \\  =\\,/=/     \n" +
+                        "   ) / _ \\      |\\ \n" +
+                        "   (/\\):(/\\)     )\\ \n" +
+                        "    \\_   _/     |Oo\\ \n" +
+                        "    `\"\"^\"\"`     `\"\"`";
+
+        System.out.println(mouseArt);
+    }
+
+
     private Adventure adventure = new Adventure();
     Scanner scanner = new Scanner(System.in);
 
@@ -16,11 +39,13 @@ public class UserInterface {
         adventure.buildMap();
 
         //TODO navngiv spil
-        System.out.println("Welcome to the Mouse Trap.");
-        System.out.println("Write help if you need help.");
-        System.out.println("Directions: You enter a labyrinth as a mouse, and need to find your way to the holy grail of cheese. You can go north, east, south or west." +
+        System.out.println(BLUE_UNDERLINED + BLUE_BOLD + "Welcome to the Mouse Trap." + "\u001B[0m");
+        printMouseArt();
+        System.out.println(BLACK_BOLD +"Directions: You enter a labyrinth as a mouse, and need to find your way to the holy grail of cheese. You can go north, east, south or west." +
                 "\nDepending on where you are, you may only be able to go certain ways, in certain places." +
-                "\nTo choose a direction, write 'go' and the direction you would like to go.");
+                "\nTo choose a direction, write 'go' and the direction you would like to go." + "\u001B[0m");
+        System.out.println("Write help if you need help.");
+
 
         boolean runProgram = true;
 
