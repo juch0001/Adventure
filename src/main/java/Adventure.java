@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.sound.midi.Soundbank;
 
 public class Adventure {
 
@@ -53,7 +52,6 @@ public class Adventure {
         room9.setWest(room8);
 
 
-        current = room1;
     }
 
     public Room getCurrentRoom() {
@@ -62,26 +60,35 @@ public class Adventure {
 
 
     //TODO if bruger skriver east -> go east osv.
-       public void moveToRoom(String room) {
-        if (room.equals("go east")) {
-            current = current.getEast();
-        }else if (room.equals("go south")) {
-            current = current.getSouth();
-        } else if (1==1) {
-            current = current.getWest();
-        } else if (room.equals("go north")) {
-            current = current.getNorth();
-        } else if(room.equals(pathNotAvailable)) {
-            System.out.println("path not available");
+    public String moveToRoom(String room) {
+        Room nextRoom = null;
+        if (room.equals("go east") && current.getEast() != null) {
+            nextRoom = current.getEast();
+        } else if (room.equals("go south") && current.getSouth() != null) {
+            nextRoom = current.getSouth();
+        } else if (room.equals("go west") && current.getWest() != null) {
+            nextRoom = current.getWest();
+        } else if (room.equals("go north") && current.getNorth() != null) {
+            nextRoom = current.getNorth();
+        }  if (nextRoom != null) {
+            current = nextRoom;
+            return current.getDescription();
+        } else {
+            return null;
         }
     }
 
     public void directions(String menu) {
         switch (menu) {
             case "go north":
-                System.out.println("going north");
-                moveToRoom("go north");
-                System.out.println(getCurrentRoom().getName());
+                String northResult = moveToRoom("go north");
+                if (northResult != null) {
+                    System.out.println("going north");
+                    System.out.println("You are now in " + getCurrentRoom().getName());
+                    System.out.println(getCurrentRoom().getDescription());
+                } else {
+                    System.out.println("This path is not available");
+                }
                 break;
 
             case "go east":
@@ -98,6 +105,10 @@ public class Adventure {
                 System.out.println("going west");
                 moveToRoom("go west");
                 System.out.println(getCurrentRoom().getName());
+                break;
+
+            default:
+                System.out.println("not avaliable");
                 break;
         }
     }
