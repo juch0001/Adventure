@@ -7,7 +7,6 @@ public class Room {
     private Room east;
     private Room west;
 
-
     public Room (String name, String description){
         this.name = name;
         this.description =description;
@@ -37,7 +36,6 @@ public class Room {
         this.north=north;
     }
 
-
     //Todo get og set for syd
     public Room getSouth() {
         return south;
@@ -45,7 +43,6 @@ public class Room {
     public void setSouth(Room south){
         this.south=south;
     }
-
 
     //Todo get og set for øst
     public Room getEast() {
