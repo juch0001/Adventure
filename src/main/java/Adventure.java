@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Adventure {
@@ -15,39 +16,39 @@ public class Adventure {
     Room room8= new Room("Room 8", "beskrivelse");
     Room room9= new Room("Room 9", "beskrivelse");
 
-    //Room 1
+        //Room 1
         room1.setEast(room2);
         room1.setSouth(room4);
 
-    //Room 2
+        //Room 2
         room2.setWest(room1);
         room2.setEast(room3);
 
-    //Room 3
+        //Room 3
         room3.setWest(room2);
         room3.setWest(room6);
 
-    //Room 4
+        //Room 4
         room4.setNorth(room1);
         room4.setSouth(room7);
 
-    //Room 5
+        //Room 5
         room5.setSouth(room8);
 
-    //Room 6
+        //Room 6
         room6.setNorth(room3);
         room6.setSouth(room9);
 
-    //Room 7
+        //Room 7
         room7.setNorth(room4);
         room7.setEast(room8);
 
-    // Room 8
+        // Room 8
         room8.setNorth(room5);
         room8.setEast(room9);
         room8.setWest(room7);
 
-    //Room 9
+        //Room 9
         room9.setNorth(room6);
         room9.setWest(room8);
 
@@ -61,17 +62,44 @@ public class Adventure {
 
 
     //TODO if bruger skriver east -> go east osv.
-    public void moveToRoom(String room) {
+       public void moveToRoom(String room) {
         if (room.equals("go east")) {
             current = current.getEast();
-        }else if (1==1) {
+        }else if (room.equals("go south")) {
             current = current.getSouth();
         } else if (1==1) {
             current = current.getWest();
-        } else if (1==1) {
-            current.getNorth();
+        } else if (room.equals("go north")) {
+            current = current.getNorth();
+        } else if(room.equals(pathNotAvailable)) {
+            System.out.println("path not available");
+        }
+    }
+
+    public void directions(String menu) {
+        switch (menu) {
+            case "go north":
+                System.out.println("going north");
+                moveToRoom("go north");
+                System.out.println(getCurrentRoom().getName());
+                break;
+
+            case "go east":
+                System.out.println("going east");
+                moveToRoom("go east");
+                System.out.println(getCurrentRoom().getName());
+                break;
+            case "go south":
+                System.out.println("going south");
+                moveToRoom("go south");
+                System.out.println(getCurrentRoom().getName());
+                break;
+            case "go west":
+                System.out.println("going west");
+                moveToRoom("go west");
+                System.out.println(getCurrentRoom().getName());
+                break;
         }
     }
 
 
-}

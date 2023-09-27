@@ -48,26 +48,6 @@ public class UserInterface {
             }
         }
     }
-    public void go(String menu) {
 
-
-        // TODO retning - public void metode
-        switch (menu) {
-            case "go north":
-                System.out.println("going north");
-                break;
-            case "go east":
-                System.out.println("going east");
-                adventure.moveToRoom("go east");
-                System.out.println(adventure.getCurrentRoom().getName());
-                break;
-            case "go south":
-                System.out.println("going south");
-                break;
-            case "go west":
-                System.out.println("going west");
-                break;
-        }
-    }
 
 }
