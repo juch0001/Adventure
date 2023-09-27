@@ -5,15 +5,27 @@ public class Adventure {
     private Room current;
 
     public void buildMap() {
-    Room room1 = new Room("Room 1", "beskrivelse");
-    Room room2 = new Room("Room 2", "beskrivelse");
-    Room room3= new Room("Room 3", "beskrivelse");
-    Room room4= new Room("Room 4", "beskrivelse");
-    Room room5= new Room("Room 5", "beskrivelse");
-    Room room6= new Room("Room 6", "beskrivelse");
-    Room room7= new Room("Room 7", "beskrivelse");
-    Room room8= new Room("Room 8", "beskrivelse");
-    Room room9= new Room("Room 9", "beskrivelse");
+        Room room1 = new Room("Room 1", "You are in a very simple room, nothing stands out to you apart from the 2 possible paths." +
+                "\nWhich way would you like to go?");
+        Room room2 = new Room("Room 2", "The paths extends on either side of you." +
+                "\nWhich way would you like to go?");
+        Room room3 = new Room("Room 3", "You have reached a corner." +
+                "\nWhich way would you like to go?");
+        Room room4 = new Room("Room 4", "The path extends on either side of you." +
+                "\nWhich way would you like to go?");
+        Room room5 = new Room("Room 5", "You are in a huge and magnificent room, with long tables as far as your eyes can see." +
+                "\nThe tables are decorated with flowers, and filled with cheese, however what catches your eyes is the giant cheese in the back." +
+                "\nThe holy grail of Cheese! You hurry down, and relish in the taste of the cheese.");
+        Room room6 = new Room("Room 6", "The path extends on either side of you." +
+                "\nWhich way would you like to go?");
+        Room room7 = new Room("Room 7", "You have reached a corner." +
+                "\nWhich way would you like to go?");
+        Room room8 = new Room("Room 8", "The path splits, and there are now 3 paths to choose between." +
+                "\nWhich way would you like to go?");
+        Room room9 = new Room("Room 9", "You have reached a corner." +
+                "\nWhich way would you like to go?");
+
+        current = room1;
 
         //Room 1
         room1.setEast(room2);
@@ -25,7 +37,7 @@ public class Adventure {
 
         //Room 3
         room3.setWest(room2);
-        room3.setWest(room6);
+        room3.setSouth(room6);
 
         //Room 4
         room4.setNorth(room1);
@@ -50,14 +62,11 @@ public class Adventure {
         //Room 9
         room9.setNorth(room6);
         room9.setWest(room8);
-
-
     }
 
     public Room getCurrentRoom() {
         return current;
     }
-
 
     //TODO if bruger skriver east -> go east osv.
     public String moveToRoom(String room) {
@@ -92,19 +101,34 @@ public class Adventure {
                 break;
 
             case "go east":
-                System.out.println("going east");
-                moveToRoom("go east");
-                System.out.println(getCurrentRoom().getName());
+                String eastResult = moveToRoom("go east");
+                if (eastResult != null) {
+                    System.out.println("going east");
+                    System.out.println("You are now in " + getCurrentRoom().getName());
+                    System.out.println(getCurrentRoom().getDescription());
+                } else {
+                    System.out.println("This path is not available");
+                }
                 break;
             case "go south":
-                System.out.println("going south");
-                moveToRoom("go south");
-                System.out.println(getCurrentRoom().getName());
+                String southResult = moveToRoom("go south");
+                if (southResult != null) {
+                    System.out.println("going south");
+                    System.out.println("You are now in " + getCurrentRoom().getName());
+                    System.out.println(getCurrentRoom().getDescription());
+                } else {
+                    System.out.println("This path is not available");
+                }
                 break;
             case "go west":
-                System.out.println("going west");
-                moveToRoom("go west");
-                System.out.println(getCurrentRoom().getName());
+                String westResult = moveToRoom("go west");
+                if (westResult != null) {
+                    System.out.println("going west");
+                    System.out.println("You are now in "+ getCurrentRoom().getName());
+                    System.out.println(getCurrentRoom().getDescription());
+                } else {
+                    System.out.println("This path is not available");
+                }
                 break;
 
             default:
@@ -113,4 +137,4 @@ public class Adventure {
         }
     }
 
-
+}
