@@ -19,4 +19,8 @@ public class Adventure {
     public Room getCurrentRoom() {
         return player.getCurrentRoom();
     }
+
+    public void directions(String menu) {
+        player.directions(menu);
+    }
 }

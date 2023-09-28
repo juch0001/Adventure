@@ -7,7 +7,6 @@ public class UserInterface {
     public static final String MAGENTA_BLACKGROUND = "\033[45m"; //lilla baggrund
     public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m"; //Gul baggrund
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
-
     public static void printMouseArt() {
         String mouseArt =
 

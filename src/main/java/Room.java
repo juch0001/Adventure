@@ -7,9 +7,19 @@ public class Room {
     private Room east;
     private Room west;
 
+
+    public Room(){
+
+    }
+
     public Room (String name, String description){
         this.name = name;
-        this.description =description;
+        this.description = description;
+        this.east = null;
+        this.west = null;
+        this.north = null;
+        this.south = null;
+
     }
 
     //Todo get og set for navn
@@ -59,4 +69,5 @@ public class Room {
     public void setWest(Room west){
         this.west=west;
     }
+
 }
