@@ -23,6 +23,7 @@ public class Player {
             nextRoom = currentRoom.getNorth();
         }
         if (nextRoom != null) {
+            currentRoom = nextRoom;
             return currentRoom.getDescription();
         } else {
             return null;
