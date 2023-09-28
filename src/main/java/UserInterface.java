@@ -23,7 +23,6 @@ public class UserInterface {
         System.out.println(mouseArt);
     }
 
-
     private Adventure adventure = new Adventure();
     Scanner scanner = new Scanner(System.in);
 
@@ -41,11 +40,10 @@ public class UserInterface {
         //TODO navngiv spil
         System.out.println(BLUE_UNDERLINED + BLUE_BOLD + "Welcome to the Mouse Trap." + "\u001B[0m");
         printMouseArt();
-        System.out.println(BLACK_BOLD +"Directions: You enter a labyrinth as a mouse, and need to find your way to the holy grail of cheese. You can go north, east, south or west." +
-                "\nDepending on where you are, you may only be able to go certain ways, in certain places." +
+        System.out.println(BLACK_BOLD +"Directions: You enter a labyrinth as a mouse, and need to find your way to the holy grail of cheese." +
+                "\nYou can go north, east, south or west." +
                 "\nTo choose a direction, write 'go' and the direction you would like to go." + "\u001B[0m");
         System.out.println("Write help if you need help.");
-
 
         boolean runProgram = true;
 
@@ -69,7 +67,6 @@ public class UserInterface {
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             }
-
         }
     }
 }
