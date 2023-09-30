@@ -55,7 +55,6 @@ public class UserInterface {
 
             menu = getInput();
 
-            Player player = null;
             if (menu.equals("help")) {
                 System.out.println("To go south, write 'go south'. To go north, write 'go north'. To go east, write 'go east'." +
                         " To go west, write 'go west'.");

@@ -15,18 +15,6 @@ public class Player {
 
 
 
-    public boolean takeItem(String itemNamee) {
-        for (Item item : currentRoom.getItems()){
-            if(item.getItemName().toLowerCase().equals(itemNamee)) {
-                inventory.add(item);
-                currentRoom.getItems().remove(item);
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     public Room getCurrentRoom() {
         return currentRoom;
     }

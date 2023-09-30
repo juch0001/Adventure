@@ -43,35 +43,49 @@ public class Map {
         //Room 2
         room2.setWest(room1);
         room2.setEast(room3);
-        room2.addItem(new Item("tihi", "tuhu"));
+        room2.addItem(new Item("rum2", "tuhu"));
 
         //Room 3
         room3.setWest(room2);
         room3.setSouth(room6);
+        room3.addItem(new Item("rum3", "tuhu"));
+
 
         //Room 4
         room4.setNorth(room1);
         room4.setSouth(room7);
+        room4.addItem(new Item("rum4", "tuhu"));
+
 
         //Room 5
         room5.setSouth(room8);
+        room5.addItem(new Item("rum5", "tuhu"));
+
 
         //Room 6
         room6.setNorth(room3);
         room6.setSouth(room9);
+        room6.addItem(new Item("rum6", "tuhu"));
+
 
         //Room 7
         room7.setNorth(room4);
         room7.setEast(room8);
+        room7.addItem(new Item("rum7", "tuhu"));
+
 
         // Room 8
         room8.setNorth(room5);
         room8.setEast(room9);
         room8.setWest(room7);
+        room8.addItem(new Item("rum8", "tuhu"));
+
 
         //Room 9
         room9.setNorth(room6);
         room9.setWest(room8);
+        room9.addItem(new Item("rum9", "tuhu"));
+
     }
 
 

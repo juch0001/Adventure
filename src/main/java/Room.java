@@ -27,28 +27,17 @@ public class Room {
         itemList.add(item);
     }
 
-    public void removeItem(Item item) {
-        itemList.remove(item);
-    }
 
-    public ArrayList<Item> getItems() {
-        return itemList;
-    }
 
     //Todo get og set for navn
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     //Todo get og set for beskrivelse
     public String getDescription() {
         return description;
-    }
-    public void setDescription(String description){
-        this.description=description;
     }
 
     //Todo get og set for nord
