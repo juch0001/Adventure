@@ -9,7 +9,8 @@ public class Room {
     private Room east;
     private Room west;
 
-    private Item item;
+
+    private ArrayList <Item> itemList = new ArrayList<>();
 
     public Room (String name, String description){
         this.name = name;
@@ -20,10 +21,14 @@ public class Room {
         this.south = null;
     }
 
-    ArrayList <Item> itemList = new ArrayList();
+
 
     public void addItem(Item item) {
         itemList.add(item);
+    }
+
+    public void removeItem(Item item) {
+        itemList.remove(item);
     }
 
     public ArrayList<Item> getItems() {

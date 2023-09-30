@@ -1,25 +1,31 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
 
     private Room currentRoom;
-    private Item item;
+    private ArrayList<Item> inventory;
+    ArrayList<Item>itemList;
 
-    ArrayList<Item> itemList = new ArrayList<>();
-
-    public void addItem(String itemName, String itemDescription) {
-        Item item = new Item(itemName, itemDescription);
-        itemList.add(item);
+    public Player(Room currentRoom){
+        this.inventory =new ArrayList<>();
+        this.currentRoom = currentRoom;
     }
 
-    public void addItem(Item item) {
-        itemList.add(item);
+
+
+    public boolean takeItem(String itemNamee) {
+        for (Item item : currentRoom.getItems()){
+            if(item.getItemName().toLowerCase().equals(itemNamee)) {
+                inventory.add(item);
+                currentRoom.getItems().remove(item);
+                return true;
+            }
+        }
+        return false;
     }
 
-    public ArrayList<Item> getItems() {
-        return itemList;
-    }
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -60,7 +66,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going north" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(item.getItemName() + item.getItemDescription());
+                    System.out.println(Item.getItemName() + Item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }
@@ -72,7 +78,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going east" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(item.getItemName() + item.getItemDescription());
+                    System.out.println(Item.getItemName() + Item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }
@@ -84,7 +90,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going south" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(item.getItemName() + item.getItemDescription());
+                    System.out.println(Item.getItemName() + Item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }
@@ -96,7 +102,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going west" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(item.getItemName() + item.getItemDescription());
+                    System.out.println(Item.getItemName() + Item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }
@@ -106,4 +112,5 @@ public class Player {
                 break;
         }
     }
+
 }

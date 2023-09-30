@@ -1,6 +1,6 @@
 public class Map {
 
-    private Room current;
+    private Room currentRoom;
 
     public void buildMap() {
         Room room1 = new Room("Room 1","You are in something that looks like a basement, with a bit of food as well as some barrels scattered around." +
@@ -33,7 +33,7 @@ public class Map {
                 "\nThere are 2 possible paths to take" +
                 "\nWhich way would you like to go?");
 
-        current = room1;
+        this.currentRoom = room1;
 
         //Room 1
         room1.setEast(room2);
@@ -74,8 +74,14 @@ public class Map {
         room9.setWest(room8);
     }
 
+
+
     public Room getStarterRoom() {
-        return current;
+        return currentRoom;
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
     }
 
 }

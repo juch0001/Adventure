@@ -6,7 +6,7 @@ public class Adventure {
     private Player player;
 
     public Adventure(){
-        player = new Player();
+        player = new Player(map.getCurrentRoom());
     }
 
     public void buildMap() {
@@ -20,10 +20,6 @@ public class Adventure {
 
     public void directions(String menu) {
         player.directions(menu);
-    }
-
-    public void addItem(Item item) {
-        player.addItem(item);
     }
 
 

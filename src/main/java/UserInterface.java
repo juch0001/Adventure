@@ -20,7 +20,7 @@ public class UserInterface {
         System.out.println(mouseArt);
     }
 
-    private Adventure adventure = new Adventure();
+    private Adventure adventure;
     Scanner scanner = new Scanner(System.in);
 
     public String getInput() {
@@ -29,6 +29,10 @@ public class UserInterface {
             System.out.println("What you entered is not an option, write help, exit or look.");
         }
         return scanner.nextLine();
+    }
+
+    public UserInterface(Adventure adventure) {
+        this.adventure =adventure;
     }
 
     public void startGame() {
@@ -51,6 +55,7 @@ public class UserInterface {
 
             menu = getInput();
 
+            Player player = null;
             if (menu.equals("help")) {
                 System.out.println("To go south, write 'go south'. To go north, write 'go north'. To go east, write 'go east'." +
                         " To go west, write 'go west'.");
@@ -67,9 +72,6 @@ public class UserInterface {
                 System.out.println(adventure.getCurrentRoom().getDescription());
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
-            }else if (menu.equals("Take")) {
-                adventure.addItem(String );
-                System.out.println(adventure.addItem();
             }
         }
     }
