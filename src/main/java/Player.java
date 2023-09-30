@@ -2,12 +2,13 @@ public class Player {
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
 
     private Room currentRoom;
+    private Item item;
 
-    public Room getCurrentRoom() {
-        return currentRoom;
-    }
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
+    ArrayList<Item> itemList = new ArrayList<>();
+
+    public void addItem(String itemName, String itemDescription) {
+        Item item = new Item(itemName, itemDescription);
+        itemList.add(item);
     }
 
     //TODO if bruger skriver east -> go east osv.

@@ -4,8 +4,6 @@ import java.util.Scanner;
 public class UserInterface {
     public static final String BLUE_BOLD = "\033[1;34m"; //farvekode til blå
     public static final String BLUE_UNDERLINED = "\033[4;34m"; //blå linje under tekst
-    public static final String MAGENTA_BLACKGROUND = "\033[45m"; //lilla baggrund
-    public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m"; //Gul baggrund
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
     public static void printMouseArt() {
         String mouseArt =
@@ -65,6 +63,9 @@ public class UserInterface {
                 System.out.println(adventure.getCurrentRoom().getDescription());
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
+            }else if (menu.equals("Take")) {
+                adventure.addItem(String );
+                System.out.println(adventure.addItem();
             }
         }
     }

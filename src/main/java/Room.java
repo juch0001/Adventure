@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Room {
     //Todo objekt og variabler
     private String name;
@@ -7,10 +9,7 @@ public class Room {
     private Room east;
     private Room west;
 
-
-    public Room(){
-
-    }
+    private Item item;
 
     public Room (String name, String description){
         this.name = name;
@@ -20,6 +19,16 @@ public class Room {
         this.north = null;
         this.south = null;
 
+    }
+
+    ArrayList <Item> itemList = new ArrayList();
+
+    public void addItem(Item item) {
+        itemList.add(item);
+    }
+
+    public ArrayList<Item> getItems() {
+        return itemList;
     }
 
     //Todo get og set for navn
