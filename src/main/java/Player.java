@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Player {
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
 
@@ -9,6 +11,22 @@ public class Player {
     public void addItem(String itemName, String itemDescription) {
         Item item = new Item(itemName, itemDescription);
         itemList.add(item);
+    }
+
+    public void addItem(Item item) {
+        itemList.add(item);
+    }
+
+    public ArrayList<Item> getItems() {
+        return itemList;
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 
     //TODO if bruger skriver east -> go east osv.
@@ -42,6 +60,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going north" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
+                    System.out.println(item.getItemName() + item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }
@@ -53,6 +72,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going east" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
+                    System.out.println(item.getItemName() + item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }
@@ -64,6 +84,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going south" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
+                    System.out.println(item.getItemName() + item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }
@@ -75,6 +96,7 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going west" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
+                    System.out.println(item.getItemName() + item.getItemDescription());
                 } else {
                     System.out.println("This path is not available");
                 }

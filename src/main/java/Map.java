@@ -3,7 +3,7 @@ public class Map {
     private Room current;
 
     public void buildMap() {
-        Room room1 = new Room("Room 1", "You are in something that looks like a basement, with a bit of food as well as some barrels scattered around." +
+        Room room1 = new Room("Room 1","You are in something that looks like a basement, with a bit of food as well as some barrels scattered around." +
                 "\nNothing really stands out to you apart from 2 possible paths leading away from the basement, one more well lit than the other." +
                 "\nWhich way would you like to go?");
         Room room2 = new Room("Room 2", "You enter a room, with dim lighting, theres some furniture as well as a grandiose canvas picturing a impressive looking mouse." +
@@ -43,6 +43,7 @@ public class Map {
         //Room 2
         room2.setWest(room1);
         room2.setEast(room3);
+        room2.addItem(new Item("tihi", "tuhu"));
 
         //Room 3
         room3.setWest(room2);

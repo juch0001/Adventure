@@ -56,6 +56,10 @@ public class UserInterface {
                         " To go west, write 'go west'.");
                 System.out.println("Look");
                 System.out.println("Exit ");
+
+
+
+
             } else if (menu.equals("exit")) {
                 System.out.println("We hope to see you again soon");
                 runProgram = false;
@@ -70,3 +74,6 @@ public class UserInterface {
         }
     }
 }
+
+
+// lave Item om til String inde i player

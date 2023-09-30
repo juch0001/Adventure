@@ -18,7 +18,6 @@ public class Room {
         this.west = null;
         this.north = null;
         this.south = null;
-
     }
 
     ArrayList <Item> itemList = new ArrayList();
