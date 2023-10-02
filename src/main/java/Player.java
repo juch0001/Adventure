@@ -42,6 +42,16 @@ public class Player {
         inventory.remove(item);
     }
 
+    public void pickUpItem (Item item){
+        if (currentRoom.hasItem(item)){
+            currentRoom.removeItem(item);
+            takeItem(item);
+            System.out.println("You picked up: " + item.getItemDescription());
+        } else {
+            System.out.println("The item is not avalible in this room.");
+        }
+    }
+
     //TODO if bruger skriver east -> go east osv.
     public String moveToRoom(String input) {
         Room nextRoom = null;
@@ -74,8 +84,7 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
-                        System.out.println("\n Which way would you like to go?");
+                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
                     }
                 } else {
                     System.out.println(" Hvor skal du hen nu?");
@@ -89,8 +98,7 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
-                        System.out.println("\n Which way would you like to go?");
+                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
 
                     }
                 } else {
@@ -106,8 +114,7 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
-                        System.out.println("\n Which way would you like to go?");
+                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
 
                     }
                 } else {
@@ -122,8 +129,7 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
-                        System.out.println("\n Which way would you like to go?");
+                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
                 }
                 } else {
                     System.out.println("Hvor skal du hen nu?");

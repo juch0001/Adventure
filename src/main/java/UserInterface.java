@@ -73,12 +73,18 @@ public class UserInterface {
                 runProgram = false;
             } else if (menu.equals("look")) {
                 look();
+                showAvailableItems(adventure.getCurrentRoom());
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             }else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
                 showInventory(adventure.getPlayer());
             }else if (menu.startsWith("Take")) {
-                takeItem(adventure.getPlayer(), menu.substring(5));
+                try{
+                    int choise = Integer.parseInt(menu.substring(5).trim());
+                    takeItem(adventure.getPlayer(), choise);
+                }catch (NumberFormatException e) {
+                    System.out.println("Not Avalible");
+                }
             } else if (menu.startsWith("Drop")) {
                 dropItem(adventure.getPlayer(), menu.substring(5));
             }else {
@@ -92,7 +98,21 @@ public class UserInterface {
         if (!itemList.isEmpty()){
             System.out.println("Items in the room:");
             for (Item item : itemList) {
-                System.out.println(" Du kan bruge dette våben " + item.getItemDescription());
+            }
+        }else {
+            System.out.println("There are no items in this room.");
+        }
+    }
+
+    private void showAvailableItems(Room room) {
+        ArrayList<Item> itemList = room.getItemList();
+        if (!itemList.isEmpty()) {
+            System.out.println("Available items in the room: ");
+            int index =1;
+
+            for (Item item : itemList) {
+                System.out.println(index + ". " + item.getItemDescription());
+                index++;
             }
         }else {
             System.out.println("There are no items in this room.");
@@ -112,17 +132,20 @@ public class UserInterface {
         }
     }
 
-    private void takeItem (Player player, String itemName) {
-        Item item = player.findItem(itemName);
-        if (item != null) {
-            if (player.takeItem(item)) {
-                player.getCurrentRoom().removeItem(item);
-                System.out.println("you have taken " + item.getItemDescription());
-            } else {
+    private void takeItem (Player player, int itemChoice) {
+        Room currentRoom = adventure.getCurrentRoom();
+        ArrayList<Item> itemList = currentRoom.getItemList();
+        if (itemChoice >=1 && itemChoice <= itemList.size()) {
+            Item selectedItem = itemList.get(itemChoice - 1);
+
+            if (player.takeItem(selectedItem)){
+                currentRoom.removeItem(selectedItem);
+                System.out.println("You have taken " + selectedItem.getItemDescription());
+            }else {
                 System.out.println("Your inventory is full. Drop some items first.");
             }
-        } else {
-            System.out.println("There is nothing like " + itemName + " to take around here.");
+        }else {
+            System.out.println("Invalid item choice.");
         }
     }
 

@@ -36,6 +36,10 @@ public class Room {
         return itemList.remove(item);
     }
 
+    public boolean hasItem(Item item) {
+        return itemList.contains(item);
+    }
+
 
 
     //Todo get og set for navn
@@ -80,5 +84,7 @@ public class Room {
     public void setWest(Room west){
         this.west=west;
     }
+
+
 
 }

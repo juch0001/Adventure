@@ -33,11 +33,14 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(new Item("Flowerbomb", "A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
+        room1.addItem(new Item("Cheese Slice", "A tasty slice of cheese for a hungry mouse."));
 
         //Room 2
         room2.setWest(room1);
         room2.setEast(room3);
-        room2.addItem(new Item("rum2", "brug dette våben"));
+        room2.addItem(new Item("Flashlight", "A flashlight to illuminate dark areas."));
+        room2.addItem(new Item("Map", "A map to help you navigate the maze."));
+
 
         //Room 3
         room3.setWest(room2);
@@ -48,37 +51,50 @@ public class Map {
         //Room 4
         room4.setNorth(room1);
         room4.setSouth(room7);
-        room4.addItem(new Item("rum4", "brug dette våben"));
+        room4.addItem(new Item("Hammer", "A small hammer to help you fix things."));
+        room4.addItem(new Item("Key", "A mysterious key. Its purpose is unknown."));
+
 
 
         //Room 5
         room5.setSouth(room8);
-        room5.addItem(new Item("rum5", "brug dette våben"));
+        room5.addItem(new Item("Key", "A mysterious key. Its purpose is unknown."));
+        room5.addItem(new Item("Golden Cheese", "A piece of cheese that seems extraordinary."));
+
+
 
 
         //Room 6
         room6.setNorth(room3);
         room6.setSouth(room9);
-        room6.addItem(new Item("rum6", "brug dette våben"));
+        room6.addItem(new Item("Gloves", "A pair of gloves to protect your paws."));
+        room6.addItem(new Item("Empty Bucket", "A bucket that could be useful to carry things."));
+
 
 
         //Room 7
         room7.setNorth(room4);
         room7.setEast(room8);
-        room7.addItem(new Item("rum7", "brug dette våben"));
+        room7.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
+        room7.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
+
 
 
         // Room 8
         room8.setNorth(room5);
         room8.setEast(room9);
         room8.setWest(room7);
-        room8.addItem(new Item("rum8", "brug dette våben"));
+        room8.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
+        room8.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
+
 
 
         //Room 9
         room9.setNorth(room6);
         room9.setWest(room8);
-        room9.addItem(new Item("rum9", "brug dette våben"));
+        room9.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
+        room9.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
+
 
     }
 
