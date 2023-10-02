@@ -22,5 +22,9 @@ public class Adventure {
         player.directions(menu);
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
 
 }

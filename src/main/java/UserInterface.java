@@ -1,4 +1,5 @@
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -8,7 +9,7 @@ public class UserInterface {
     public static void printMouseArt() {
         String mouseArt =
 
-                        "     _   _        \n" +
+                "     _   _        \n" +
                         "    (q\\_/p)      \n" +
                         ".-.  |. .|        \n" +
                         "  \\  =\\,/=/     \n" +
@@ -71,10 +72,56 @@ public class UserInterface {
                 System.out.println(adventure.getCurrentRoom().getDescription());
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
+            }else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
+                showInventory(adventure.getPlayer());
+            }else if (menu.startsWith("Take")) {
+                takeItem(adventure.getPlayer(), menu.substring(5));
+            } else if (menu.startsWith("Drop")) {
+                dropItem(adventure.getPlayer(), menu.substring(5));
+            }else {
+                System.out.println("Not avalible, Type `help´");
             }
         }
     }
+    private void showInventory(Player player) {
+        ArrayList<Item> inventory = player.getInventory();
+        if (inventory.isEmpty()){
+            System.out.println("your inventory is empty.");
+        }else {
+            System.out.println("Inventory");
+            for (Item item : inventory) {
+                System.out.println("- " + item.getItemDescription());
+            }
+        }
+    }
+
+    private void takeItem (Player player, String itemName) {
+        Item item = player.findItem(itemName);
+        if (item != null) {
+            if (player.takeItem(item)) {
+                player.getCurrentRoom().removeItem(item);
+                System.out.println("you have taken " + item.getItemDescription());
+            } else {
+                System.out.println("Your inventory is full. Drop some items first.");
+            }
+        } else {
+            System.out.println("There is nothing like " + itemName + " to take around here.");
+        }
+    }
+
+
+    private void dropItem (Player player, String itemName) {
+        Item item = player.findItem(itemName);
+        if (item !=null) {
+            player.dropItem(item);
+            player.getCurrentRoom().addItem(item);
+            System.out.println("You have dropped " + item.getItemDescription());
+        }else {
+            System.out.println("You dont have anything like " + itemName + " in your inventory.");
+        }
+    }
 }
+
 
 
 // lave Item om til String inde i player

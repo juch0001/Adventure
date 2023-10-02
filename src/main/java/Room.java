@@ -10,7 +10,7 @@ public class Room {
     private Room west;
 
 
-    private ArrayList <Item> itemList = new ArrayList<>();
+    private ArrayList <Item> itemList;
 
     public Room (String name, String description){
         this.name = name;
@@ -19,12 +19,21 @@ public class Room {
         this.west = null;
         this.north = null;
         this.south = null;
+        this.itemList =new ArrayList<>();
     }
 
 
 
     public void addItem(Item item) {
         itemList.add(item);
+    }
+
+    public ArrayList<Item> getItemList() {
+        return itemList;
+    }
+
+    public boolean removeItem (Item item) {
+        return itemList.remove(item);
     }
 
 

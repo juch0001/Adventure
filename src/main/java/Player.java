@@ -6,13 +6,28 @@ public class Player {
 
     private Room currentRoom;
     private ArrayList<Item> inventory;
-    ArrayList<Item>itemList;
 
     public Player(Room currentRoom){
         this.inventory =new ArrayList<>();
         this.currentRoom = currentRoom;
     }
 
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    public boolean takeItem(Item item) {
+        return inventory.add(item);
+    }
+
+    public Item findItem (String itemName) {
+        for (Item item : inventory) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
 
 
     public Room getCurrentRoom() {
@@ -21,6 +36,10 @@ public class Player {
 
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
+    }
+
+    public void dropItem(Item item) {
+        inventory.remove(item);
     }
 
     //TODO if bruger skriver east -> go east osv.
@@ -54,9 +73,12 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going north" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(Item.getItemName() + Item.getItemDescription());
+                    for (Item item : currentRoom.getItemList()) {
+                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
+                        System.out.println("\n Which way would you like to go?");
+                    }
                 } else {
-                    System.out.println("This path is not available");
+                    System.out.println(" Hvor skal du hen nu?");
                 }
                 break;
             case "go east":
@@ -66,11 +88,16 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going east" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(Item.getItemName() + Item.getItemDescription());
+                    for (Item item : currentRoom.getItemList()) {
+                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
+                        System.out.println("\n Which way would you like to go?");
+
+                    }
                 } else {
-                    System.out.println("This path is not available");
+                    System.out.println("Hvor skal du hen nu?");
                 }
                 break;
+
             case "go south":
                 arrow = " ↓ ";
                 String southResult = moveToRoom("go south");
@@ -78,9 +105,13 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going south" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(Item.getItemName() + Item.getItemDescription());
+                    for (Item item : currentRoom.getItemList()) {
+                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
+                        System.out.println("\n Which way would you like to go?");
+
+                    }
                 } else {
-                    System.out.println("This path is not available");
+                    System.out.println("Hvor skal du hen nu?");
                 }
                 break;
             case "go west":
@@ -90,9 +121,12 @@ public class Player {
                     System.out.println(BLACK_BOLD + "going west" + arrow + "\u001B[0m");
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
-                    System.out.println(Item.getItemName() + Item.getItemDescription());
+                    for (Item item : currentRoom.getItemList()) {
+                        System.out.println(item.getItemName() + "- " + item.getItemDescription());
+                        System.out.println("\n Which way would you like to go?");
+                }
                 } else {
-                    System.out.println("This path is not available");
+                    System.out.println("Hvor skal du hen nu?");
                 }
                 break;
             default:
