@@ -24,6 +24,12 @@ public class UserInterface {
     private Adventure adventure;
     Scanner scanner = new Scanner(System.in);
 
+    private void look(){
+        Room currentRoom = adventure.getCurrentRoom();
+        System.out.println(currentRoom.getDescription());
+        showItemsInRoom(currentRoom);
+    }
+
     public String getInput() {
         while (!scanner.hasNextLine()) {
             scanner.next();
@@ -59,17 +65,14 @@ public class UserInterface {
             if (menu.equals("help")) {
                 System.out.println("To go south, write 'go south'. To go north, write 'go north'. To go east, write 'go east'." +
                         " To go west, write 'go west'.");
-                System.out.println("Look");
+                //System.out.println("Look");
                 System.out.println("Exit ");
-
-
-
 
             } else if (menu.equals("exit")) {
                 System.out.println("We hope to see you again soon");
                 runProgram = false;
             } else if (menu.equals("look")) {
-                System.out.println(adventure.getCurrentRoom().getDescription());
+                look();
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             }else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
@@ -83,6 +86,20 @@ public class UserInterface {
             }
         }
     }
+
+    private void showItemsInRoom (Room room){
+        ArrayList<Item> itemList = room.getItemList();
+        if (!itemList.isEmpty()){
+            System.out.println("Items in the room:");
+            for (Item item : itemList) {
+                System.out.println(" Du kan bruge dette våben " + item.getItemDescription());
+            }
+        }else {
+            System.out.println("There are no items in this room.");
+        }
+    }
+
+
     private void showInventory(Player player) {
         ArrayList<Item> inventory = player.getInventory();
         if (inventory.isEmpty()){
