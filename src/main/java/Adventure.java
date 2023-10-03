@@ -26,8 +26,12 @@ public class Adventure {
         return player;
     }
 
-    public boolean takeItem(String takeItem) {
-        return player.takeItem(takeItem);
+    public Player showInventory() {
+        return player.showInventory();
+    }
+
+    public boolean takeItem(String itemName) {
+        return player.takeItem(itemName);
     }
 
 

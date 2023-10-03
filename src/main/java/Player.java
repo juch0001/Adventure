@@ -12,19 +12,28 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
-    public ArrayList<Item> getInventory() {
-        return inventory;
+    public Player showInventory() {
+        ArrayList<Item> inventory = getInventory();
+        if (inventory.isEmpty()){
+            System.out.println("your inventory is empty.");
+        }else {
+            System.out.println("Inventory");
+            for (Item item : inventory) {
+                System.out.println("- " + item.getItemName() + item.getItemDescription());
+            }
+        }
+        return null;
     }
-/*
-    public boolean takeItem(Item item) {
-        return inventory.add(item);
+
+   /*public void takeItem(Item item) {
+        inventory.add(item);
     }*/
 
     public boolean takeItem (String itemName) {
-        for (Item item : getCurrentRoom().getItemList()){
-            if (item.getItemName().toLowerCase().equals(itemName)){
-                getInventory().add(item);
-                getCurrentRoom().getItemList().remove(item);
+        for (Item item : currentRoom.getItemList()){
+            if (item.getItemName().toLowerCase().equals(itemName.toLowerCase())){
+                inventory.add(item);
+                currentRoom.getItemList().remove(item);
                 return true;
             }
         }
@@ -40,21 +49,9 @@ public class Player {
         return null;
     }
 
-
-    public Room getCurrentRoom() {
-        return currentRoom;
-    }
-
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
-    }
-
     public void dropItem(Item item) {
         inventory.remove(item);
     }
-
-    /*player.eat(foodname: "appel");
-    assertEquals(Returnmasses.ok,result);*/
 
 
     //TODO if bruger skriver east -> go east osv.
@@ -146,6 +143,19 @@ public class Player {
         }
     }
 
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
 
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
 
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
 }
+
+
+ /*player.eat(foodname: "appel");
+    assertEquals(Returnmasses.ok,result);*/

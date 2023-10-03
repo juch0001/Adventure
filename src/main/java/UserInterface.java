@@ -79,7 +79,7 @@ public class UserInterface {
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             }else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
-                showInventory(adventure.getPlayer());
+                adventure.showInventory();
             }else if (menu.contains("take")) {//vi skal ændre at det kan staves med stort og småt
                 /*try{
                     int choise =   Integer.parseInt(menu.substring(5).trim());
@@ -87,9 +87,10 @@ public class UserInterface {
                 }catch (NumberFormatException e) {
                     System.out.println("Not Avalible");
                 }*/
-            boolean succesTake = adventure.takeItem(menu);
-            if (succesTake) {
-                System.out.println("You have taken " + menu);
+                String[] command = menu.split(" ");
+            boolean successTake = adventure.takeItem(command[1]);
+            if (successTake) {
+                System.out.println("You have taken " + command[1]);
             } else {
                 System.out.println(" You cant take this item");
             }
@@ -103,6 +104,18 @@ public class UserInterface {
             }
         }
     }
+
+  /*  public void showInventory(Player player) {
+        ArrayList<Item> inventory = player.getInventory();
+        if (inventory.isEmpty()){
+            System.out.println("your inventory is empty.");
+        }else {
+            System.out.println("Inventory");
+            for (Item item : inventory) {
+                System.out.println("- " + item.getItemName() + item.getItemDescription());
+            }
+        }
+    }*/
 
     private void showItemsInRoom (Room room){
         ArrayList<Item> itemList = room.getItemList();
@@ -131,17 +144,7 @@ public class UserInterface {
     }
 
 
-    private void showInventory(Player player) {
-        ArrayList<Item> inventory = player.getInventory();
-        if (inventory.isEmpty()){
-            System.out.println("your inventory is empty.");
-        }else {
-            System.out.println("Inventory");
-            for (Item item : inventory) {
-                System.out.println("- " + item.getItemName() + item.getItemDescription());
-            }
-        }
-    }
+
 
     /*private void takeItem (Player player, int itemChoice) {
         Room currentRoom = adventure.getCurrentRoom();
