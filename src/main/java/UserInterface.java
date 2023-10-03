@@ -143,7 +143,7 @@ public class UserInterface {
         }
     }
 
-    private void takeItem (Player player, int itemChoice) {
+    /*private void takeItem (Player player, int itemChoice) {
         Room currentRoom = adventure.getCurrentRoom();
         ArrayList<Item> itemList = currentRoom.getItemList();
         if (itemChoice >=1 && itemChoice <= itemList.size()) {
@@ -158,15 +158,16 @@ public class UserInterface {
         }else {
             System.out.println("Invalid item choice.");
         }
-    }
+    }*/
+
 
     private void dropItem (Player player, String itemName) {
         Item item = player.findItem(itemName);
-        if (item !=null) {
+        if (item != null) {
             player.dropItem(item);
             player.getCurrentRoom().addItem(item);
-            System.out.println("You have dropped " + item.getItemDescription());
-        }else {
+            System.out.println("You have dropped " + item.getItemName() + item.getItemDescription());
+        } else {
             System.out.println("You dont have anything like " + itemName + " in your inventory.");
         }
     }
