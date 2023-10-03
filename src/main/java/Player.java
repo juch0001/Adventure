@@ -15,9 +15,20 @@ public class Player {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
-
+/*
     public boolean takeItem(Item item) {
         return inventory.add(item);
+    }*/
+
+    public boolean takeItem (String itemName) {
+        for (Item item : getCurrentRoom().getItemList()){
+            if (item.getItemName().toLowerCase().equals(itemName)){
+                getInventory().add(item);
+                getCurrentRoom().getItemList().remove(item);
+                return true;
+            }
+        }
+        return false;
     }
 
     public Item findItem (String itemName) {
@@ -42,15 +53,9 @@ public class Player {
         inventory.remove(item);
     }
 
-    public void pickUpItem (Item item){
-        if (currentRoom.hasItem(item)){
-            currentRoom.removeItem(item);
-            takeItem(item);
-            System.out.println("You picked up: " + item.getItemDescription());
-        } else {
-            System.out.println("The item is not avalible in this room.");
-        }
-    }
+    /*player.eat(foodname: "appel");
+    assertEquals(Returnmasses.ok,result);*/
+
 
     //TODO if bruger skriver east -> go east osv.
     public String moveToRoom(String input) {
@@ -140,5 +145,7 @@ public class Player {
                 break;
         }
     }
+
+
 
 }

@@ -74,18 +74,29 @@ public class UserInterface {
             } else if (menu.equals("look")) {
                 look();
                 showAvailableItems(adventure.getCurrentRoom());
+                System.out.println("Write Take 1 or 2 if you want item");
+                //items i rummet?
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             }else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
                 showInventory(adventure.getPlayer());
-            }else if (menu.startsWith("Take")) {
-                try{
-                    int choise = Integer.parseInt(menu.substring(5).trim());
+            }else if (menu.contains("take")) {//vi skal ændre at det kan staves med stort og småt
+                /*try{
+                    int choise =   Integer.parseInt(menu.substring(5).trim());
                     takeItem(adventure.getPlayer(), choise);
                 }catch (NumberFormatException e) {
                     System.out.println("Not Avalible");
-                }
-            } else if (menu.startsWith("Drop")) {
+                }*/
+            boolean succesTake = adventure.takeItem(menu);
+            if (succesTake) {
+                System.out.println("You have taken " + menu);
+            } else {
+                System.out.println(" You cant take this item");
+            }
+
+
+
+            } else if (menu.startsWith("drop")) {
                 dropItem(adventure.getPlayer(), menu.substring(5));
             }else {
                 System.out.println("Not avalible, Type `help´");
@@ -111,7 +122,7 @@ public class UserInterface {
             int index =1;
 
             for (Item item : itemList) {
-                System.out.println(index + ". " + item.getItemDescription());
+                System.out.println(index + ". " + item.getItemName() + item.getItemDescription());
                 index++;
             }
         }else {
@@ -127,7 +138,7 @@ public class UserInterface {
         }else {
             System.out.println("Inventory");
             for (Item item : inventory) {
-                System.out.println("- " + item.getItemDescription());
+                System.out.println("- " + item.getItemName() + item.getItemDescription());
             }
         }
     }
@@ -140,7 +151,7 @@ public class UserInterface {
 
             if (player.takeItem(selectedItem)){
                 currentRoom.removeItem(selectedItem);
-                System.out.println("You have taken " + selectedItem.getItemDescription());
+                System.out.println("You have taken " + selectedItem.getItemName() + selectedItem.getItemDescription());
             }else {
                 System.out.println("Your inventory is full. Drop some items first.");
             }
@@ -148,7 +159,6 @@ public class UserInterface {
             System.out.println("Invalid item choice.");
         }
     }
-
 
     private void dropItem (Player player, String itemName) {
         Item item = player.findItem(itemName);

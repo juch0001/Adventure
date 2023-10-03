@@ -9,8 +9,6 @@ public class Item {
         this.itemDescription = itemDescription;
     }
 
-
-
     //TODO get og set for ItemName
     public String getItemName() {
         return itemName;
