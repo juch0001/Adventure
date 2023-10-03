@@ -34,5 +34,15 @@ public class Adventure {
         return player.takeItem(itemName);
     }
 
+    public Player dropItem(String itemName) {
+        return player.dropItem(itemName);
+    }
 
+    public Room showItemsInRoom(Room room) {
+        return player.showItemsInRoom(room);
+    }
+
+    public Room showAvailableItems(Room room) {
+        return player.showAvailableItems(room);
+    }
 }

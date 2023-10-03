@@ -25,10 +25,6 @@ public class Player {
         return null;
     }
 
-   /*public void takeItem(Item item) {
-        inventory.add(item);
-    }*/
-
     public boolean takeItem (String itemName) {
         for (Item item : currentRoom.getItemList()){
             if (item.getItemName().toLowerCase().equals(itemName.toLowerCase())){
@@ -49,10 +45,29 @@ public class Player {
         return null;
     }
 
+    public Player dropItem (String itemName) {
+        Item item = findItem(itemName);
+        if (item != null) {
+            dropItem(item);
+            currentRoom.addItem(item);
+            System.out.println("You have dropped " + item.getItemName());
+        } else {
+            System.out.println("You dont have anything like " + itemName + " in your inventory.");
+        }
+        return null;
+    }
+
     public void dropItem(Item item) {
         inventory.remove(item);
     }
 
+    public Room showItemsInRoom(Room room) {
+        return currentRoom.showItemsInRoom(room);
+    }
+
+    public Room showAvailableItems(Room room) {
+        return currentRoom.showAvailableItems(room);
+    }
 
     //TODO if bruger skriver east -> go east osv.
     public String moveToRoom(String input) {

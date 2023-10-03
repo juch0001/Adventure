@@ -22,7 +22,33 @@ public class Room {
         this.itemList =new ArrayList<>();
     }
 
+    public Room showItemsInRoom(Room room) {
+        ArrayList<Item> itemList = room.getItemList();
+        if (!itemList.isEmpty()) {
+            System.out.println("Items in the room:");
+            for (Item item : itemList) {
+            }
+        } else {
+            System.out.println("There are no items in this room.");
+        }
+        return null;
+    }
 
+    public Room showAvailableItems(Room room) {
+        ArrayList<Item> itemList = room.getItemList();
+        if (!itemList.isEmpty()) {
+            System.out.println("Available items in the room: ");
+            int index = 1;
+
+            for (Item item : itemList) {
+                System.out.println(index + ". " + item.getItemName() + item.getItemDescription());
+                index++;
+            }
+        } else {
+            System.out.println("There are no items in this room.");
+        }
+        return null;
+    }
 
     public void addItem(Item item) {
         itemList.add(item);
