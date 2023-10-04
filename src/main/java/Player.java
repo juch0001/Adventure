@@ -32,7 +32,7 @@ public class Player {
             printHealthPoints = "You are low on health. You should consider eating something.";
         }
         if (health > 40 && health <= 60) {
-            printHealthPoints = "You have decent health. You can eat something, if you would like.";
+            printHealthPoints = "You have decent health. You could eat something, if you would like.";
         }
         if (health > 60 && health <= 80) {
             printHealthPoints = "You have plenty of health.";
