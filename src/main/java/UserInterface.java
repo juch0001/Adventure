@@ -1,5 +1,3 @@
-import java.time.Year;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -50,7 +48,7 @@ public class UserInterface {
 
         boolean runProgram = true;
 
-        String menu = " ";
+        String menu = "";
 
         //Todo menu
         while (runProgram) {
@@ -66,14 +64,18 @@ public class UserInterface {
             } else if (menu.equals("exit")) {
                 System.out.println("We hope to see you again soon");
                 runProgram = false;
+
             } else if (menu.equals("look")) {
                 Room currentRoom = adventure.getCurrentRoom();
                 System.out.println(currentRoom.getDescription());
                 adventure.showAvailableItems(currentRoom);
+
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
+
             } else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
                 adventure.showInventory();
+
             } else if (menu.contains("take")) {
                 String[] command = menu.split(" ");
                 boolean successTake = adventure.takeItem(command[1]);
@@ -82,14 +84,27 @@ public class UserInterface {
                 } else {
                     System.out.println(" You cant take this item");
                 }
+
             } else if (menu.startsWith("drop")) {
                 adventure.dropItem(menu.substring(5));
+
             }else if (menu.contains("eat")) {
-                adventure.eatFood(menu);
-                System.out.println("You have eaten: ");
+                System.out.println(adventure.showInventory());
+                FoodEnum isFood = adventure.eatFood(menu);
+                if (isFood == FoodEnum.FOOD) {
+                    System.out.println("You have eaten: " + menu);
+                    System.out.println("Your health in points: " + adventure.getHealth());
+                    System.out.println(adventure.printHealthDescription());
+                } else if (isFood == FoodEnum.NOT_FOUND) {
+                    System.out.println(menu + " is not available.");
+                } else if (isFood == FoodEnum.NO_FOOD) {
+                    System.out.println("You cannot eat " + menu);
+                }
+
+
             }else if(menu.contains("health")) {
-                System.out.println(adventure.getHealth());
-                System.out.println(adventure.printHealthPoints());
+                System.out.println("Your health in points: " + adventure.getHealth());
+                System.out.println(adventure.printHealthDescription());
             }
         }
     }

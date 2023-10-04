@@ -8,8 +8,6 @@ public class Room {
     private Room south;
     private Room east;
     private Room west;
-
-
     private ArrayList <Item> itemList;
 
     public Room (String name, String description){
@@ -20,18 +18,6 @@ public class Room {
         this.north = null;
         this.south = null;
         this.itemList =new ArrayList<>();
-    }
-
-    public Room showItemsInRoom(Room room) {
-        ArrayList<Item> itemList = room.getItemList();
-        if (!itemList.isEmpty()) {
-            System.out.println("Items in the room:");
-            for (Item item : itemList) {
-            }
-        } else {
-            System.out.println("There are no items in this room.");
-        }
-        return null;
     }
 
     public Room showAvailableItems(Room room) {
@@ -57,16 +43,6 @@ public class Room {
     public ArrayList<Item> getItemList() {
         return itemList;
     }
-
-    public boolean removeItem (Item item) {
-        return itemList.remove(item);
-    }
-
-    public boolean hasItem(Item item) {
-        return itemList.contains(item);
-    }
-
-
 
     //Todo get og set for navn
     public String getName() {

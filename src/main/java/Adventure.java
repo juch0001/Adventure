@@ -1,5 +1,3 @@
-import javax.sound.midi.Soundbank;
-
 public class Adventure {
 
     private Map map = new Map();
@@ -42,7 +40,7 @@ public class Adventure {
         return player.showAvailableItems(room);
     }
 
-    public String printHealthPoints() {
+    public String printHealthDescription() {
     return player.printHealthDescription();
     }
 
@@ -50,7 +48,7 @@ public class Adventure {
         return player.getHealth();
     }
 
-    public FoodEnum eatFood(String itemName) {
-        return player.eatFood(itemName);
+    public FoodEnum eatFood(String food) {
+        return player.eatFood(food);
     }
 }

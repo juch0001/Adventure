@@ -13,8 +13,8 @@ public class Item {
     public String getItemName() {
         return itemName;
     }
-    //TODO get
-    // og set for ItemDescription
+
+    //TODO get og set for ItemDescription
     public String getItemDescription(){
         return itemDescription;
     }

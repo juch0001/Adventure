@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Player {
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
@@ -11,11 +10,11 @@ public class Player {
     public Player(Room currentRoom){
         this.inventory =new ArrayList<>();
         this.currentRoom = currentRoom;
-        this.health = 100;
+        this.health = 50;
     }
 
     //TODO Health
-    public void sethealth(Item item) {
+    public void setHealth(Item item) {
         if (item instanceof Food) {
             this.health += ((Food) item).getHealthPoints();
         }
@@ -29,16 +28,16 @@ public class Player {
         if (health > 0 && health <= 20) {
             printHealthPoints = "You are very low on health. You should eat something straight away.";
         }
-        if (health <= 40) {
+        if (health > 20 && health <= 40) {
             printHealthPoints = "You are low on health. You should consider eating something.";
         }
-        if (health <= 60) {
+        if (health > 40 && health <= 60) {
             printHealthPoints = "You have decent health. You can eat something, if you would like.";
         }
-        if (health <= 80) {
+        if (health > 60 && health <= 80) {
             printHealthPoints = "You have plenty of health.";
         }
-        if (health <= 100) {
+        if (health > 80 && health <= 100) {
             printHealthPoints = "You have full health.";
         }
         return printHealthPoints;
@@ -48,7 +47,7 @@ public class Player {
     public FoodEnum eatFood(String itemName) {
         Item eatItem = findItem(itemName);
         if (eatItem instanceof Food) {
-            sethealth(eatItem);
+            setHealth(eatItem);
             inventory.remove(eatItem);
             return FoodEnum.FOOD;
         } else if (eatItem == null) {
@@ -217,6 +216,5 @@ public class Player {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
-    
 
 }

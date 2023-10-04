@@ -32,75 +32,75 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(new Item("Flowerbomb", " - A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
-        room1.addItem(new Item("Sword" , "A sharp sword for defense and combat."));
+        room1.addItem(new Item("Sword" , " - A sharp sword for defense and combat."));
         room1.addItem(new Food("Cheese", " - A tasty slice of cheese for a hungry mouse.", 10));
 
         //Room 2
         room2.setWest(room1);
         room2.setEast(room3);
-        room2.addItem(new Item("Flashlight", "A flashlight to illuminate dark areas."));
-        room2.addItem(new Item("Map", "A map to help you navigate the maze."));
-        room2.addItem(new Food("Carrot Stick" , " A fresh and crunchy carrot stick.", 10));
-        room2.addItem(new Food(" Rotten Cheese" , " A piece of cheese gone bad. Yuck! ", -30));
+        room2.addItem(new Item("Flashlight", " - A flashlight to illuminate dark areas."));
+        room2.addItem(new Item("Map", " - A map to help you navigate the maze."));
+        room2.addItem(new Food("Carrot" , " - A fresh and crunchy carrot stick.", 10));
+        room2.addItem(new Food("Cheese" , " - A piece of cheese gone bad. Yuck! ", -30));
 
         //Room 3
         room3.setWest(room2);
         room3.setSouth(room6);
-        room3.addItem(new Item("Compass", "A compass that points to the nearest exit or objective."));
-        room3.addItem(new Item("Shield" , "A sturdy shield for added defense."));
-        room3.addItem(new Food("Energy-Drink" , "A drink that boosts energy but isn't good for health." , -15));
-        room3.addItem(new Food("Pineapple Slice" , "A juicy slice of pineapple." , 15));
+        room3.addItem(new Item("Compass", " - A compass that points to the nearest exit or objective."));
+        room3.addItem(new Item("Shield" , " - A sturdy shield for added defense."));
+        room3.addItem(new Food("EnergyDrink" , " - A drink that boosts energy but isn't good for health." , -15));
+        room3.addItem(new Food("Pineapple" , " - A juicy slice of pineapple." , 15));
 
         //Room 4
         room4.setNorth(room1);
         room4.setSouth(room7);
-        room4.addItem(new Item("Hammer", "A small hammer to help you fix things."));
-        room4.addItem(new Item("Key", "A mysterious key. Its purpose is unknown."));
-        room4.addItem(new Food("Mushroom", "A suspicious looking mushroom", -15));
-        room4.addItem(new Food("Honey Glazed Almonds" , "Almonds coated in sweet honey glaze." , 25));
+        room4.addItem(new Item("Hammer", " - A small hammer to help you fix things."));
+        room4.addItem(new Item("Key", " - A mysterious key. Its purpose is unknown."));
+        room4.addItem(new Food("Mushroom", " - A suspicious looking mushroom", -15));
+        room4.addItem(new Food("Almonds" , " - Almonds coated in sweet honey glaze." , 25));
 
         //Room 5
         room5.setSouth(room8);
-        room5.addItem(new Item("Key", "A mysterious key. Its purpose is unknown."));
-        room5.addItem(new Food("Golden Cheese", "A cheese that seems extraordinary.", 100));
+        room5.addItem(new Item("Key", " - A mysterious key. Its purpose is unknown."));
+        room5.addItem(new Food("Cheese", " - A cheese that seems extraordinary beyond whats normal.", 100));
 
         //Room 6
         room6.setNorth(room3);
         room6.setSouth(room9);
         room6.setEast(room10);
-        room6.addItem(new Item("Gloves", "A pair of gloves to protect your paws."));
-        room6.addItem(new Item("Empty Bucket", "A bucket that could be useful to carry things."));
-        room6.addItem(new Food("Sugary Donut", "A sugary donut, delicious but not very healthy" , -25));
+        room6.addItem(new Item("Gloves", " - A pair of gloves to protect your paws."));
+        room6.addItem(new Item("Bucket", " - A bucket that could be useful to carry things."));
+        room6.addItem(new Food("Donut", " - A sugary donut, delicious but not very healthy" , -25));
 
         //Room 7
         room7.setNorth(room4);
         room7.setEast(room8);
-        room7.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
-        room7.addItem(new Item("Speed Boots" , "Boots that enhance the player's movement speed temporarily."));
-        room7.addItem(new Food("Mixed nuts", "A handful of mixed nuts, packed with energy", 10));
-        room7.addItem(new Food("Protein Shake" , "A protein shake to aid in strength and recovery" ,30));
+        room7.addItem(new Item("Book", " - An old book with strange symbols. What could it mean?"));
+        room7.addItem(new Item("Boots" , " - Boots that enhance the player's movement speed temporarily."));
+        room7.addItem(new Food("Nuts", " - A handful of mixed nuts, packed with energy", 10));
+        room7.addItem(new Food("ProteinShake" , " - A protein shake to aid in strength and recovery" ,30));
 
 
         // Room 8
         room8.setNorth(room5);
         room8.setEast(room9);
         room8.setWest(room7);
-        room8.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
-        room8.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
-        room8.addItem(new Food("Cheese Platter" , "A platter with a variety of cheese." , 45));
-        room8.addItem(new Food("Buttercream", " A delectable dollop of creamy, smooth buttercream frosting, oozing with richness and sweetness." , -40));
+        room8.addItem(new Item("Book", " - An old book with strange symbols. What could it mean?"));
+        room8.addItem(new Item("Candle", " - A flickering candle that casts eerie shadows."));
+        room8.addItem(new Food("Platter" , " - A platter with a variety of cheese." , 45));
+        room8.addItem(new Food("Buttercream", " - A delectable dollop of creamy, smooth buttercream frosting, oozing with richness and sweetness." , -40));
 
         //Room 9
         room9.setNorth(room6);
         room9.setWest(room8);
-        room9.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
-        room9.addItem(new Item("Cooking knife", "A big cooking knife. It seems dangerous."));
-        room9.addItem(new Food("Apple", "A shiny red apple.", 15));
+        room9.addItem(new Item("Candle", " - A flickering candle that casts eerie shadows."));
+        room9.addItem(new Item("Knife", " - A big cooking knife. It seems dangerous."));
+        room9.addItem(new Food("Apple", " - A shiny red apple.", 15));
 
         //Room 10
         room10.setWest(room6);
-        room10.addItem(new Item("Toothbrush", "Does someone need brushing?"));
-        room10.addItem(new Food("Brie", "Innocent looking brie.", -100));
+        room10.addItem(new Item("Toothbrush", " - Does someone need brushing?"));
+        room10.addItem(new Food("Brie", " - Innocent looking brie.", -100));
     }
 
     public Room getStarterRoom() {
