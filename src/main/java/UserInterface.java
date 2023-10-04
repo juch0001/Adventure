@@ -50,7 +50,7 @@ public class UserInterface {
 
         boolean runProgram = true;
 
-        String menu = "";
+        String menu = " ";
 
         //Todo menu
         while (runProgram) {
@@ -70,7 +70,6 @@ public class UserInterface {
                 Room currentRoom = adventure.getCurrentRoom();
                 System.out.println(currentRoom.getDescription());
                 adventure.showAvailableItems(currentRoom);
-                adventure.showItemsInRoom(currentRoom);
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             } else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
@@ -85,13 +84,13 @@ public class UserInterface {
                 }
             } else if (menu.startsWith("drop")) {
                 adventure.dropItem(menu.substring(5));
-            } else {
-                System.out.println("Not avalible, Type `help´");
+            }else if (menu.contains("eat")) {
+                adventure.eatFood(menu);
+                System.out.println("You have eaten: ");
+            }else if(menu.contains("health")) {
+                System.out.println(adventure.getHealth());
+                System.out.println(adventure.printHealthPoints());
             }
         }
     }
 }
-
-
-
-// lave Item om til String inde i player

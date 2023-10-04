@@ -14,7 +14,7 @@ public class Map {
                 "\nThe tables are decorated with flowers, and filled with cheese, however what catches your eyes is the giant cheese in the back." +
                 "\nThe holy grail of Cheese! You hurry down, and relish in the taste of the cheese.");
         Room room6 = new Room("Room 6 ", "As you walk, the light grows in strenght. You can now make out the interior of your surroundings." +
-                "\nIt is not the usual place for a mouse such as yourself. The paths extends on either side of you.");
+                "\nIt is not the usual place for a mouse such as yourself. The paths extends on either side of you, and theres a conveniently placed door.");
         Room room7 = new Room("Room 7 ", "You have entered a large library." +
                 "\nThe smell of old books is overwhelming and although it at a quick glimpse appears as if nobody has been here for a while," +
                 " you notice signs of life in certain parts of the library." +
@@ -24,6 +24,7 @@ public class Map {
                 "The path splits, and there are now 3 paths to choose between.");
         Room room9 = new Room("Room 9 ", "You enter a kitchen. There are pots and pans as well as knives scattered about." +
                 "\nThere are 2 possible paths to take");
+        Room room10 = new Room("Room 10", "You enter a bathroom. Theres no other way to go but back.");
 
         this.currentRoom = room1;
 
@@ -31,7 +32,8 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(new Item("Flowerbomb", " - A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
-        room1.addItem(new Item("Cheese Slice", " - A tasty slice of cheese for a hungry mouse."));
+        room1.addItem(new Item("Sword" , "A sharp sword for defense and combat."));
+        room1.addItem(new Food("Cheese", " - A tasty slice of cheese for a hungry mouse.", 10));
 
         //Room 2
         room2.setWest(room1);
@@ -49,15 +51,18 @@ public class Map {
         room4.setSouth(room7);
         room4.addItem(new Item("Hammer", "A small hammer to help you fix things."));
         room4.addItem(new Item("Key", "A mysterious key. Its purpose is unknown."));
+        room4.addItem(new Food("Mushroom", "A suspicious looking mushroom", -15));
+        room4.addItem(new Food("Honey Glazed Almonds" , "Almonds coated in sweet honey glaze." , 25));
 
         //Room 5
         room5.setSouth(room8);
         room5.addItem(new Item("Key", "A mysterious key. Its purpose is unknown."));
-        room5.addItem(new Item("Golden Cheese", "A piece of cheese that seems extraordinary."));
+        room5.addItem(new Food("Golden Cheese", "A cheese that seems extraordinary.", 100));
 
         //Room 6
         room6.setNorth(room3);
         room6.setSouth(room9);
+        room6.setEast(room10);
         room6.addItem(new Item("Gloves", "A pair of gloves to protect your paws."));
         room6.addItem(new Item("Empty Bucket", "A bucket that could be useful to carry things."));
 
@@ -65,7 +70,10 @@ public class Map {
         room7.setNorth(room4);
         room7.setEast(room8);
         room7.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
-        room7.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
+        room7.addItem(new Item("Speed Boots" , "Boots that enhance the player's movement speed temporarily."));
+        room7.addItem(new Food("Mixed nuts", "A handful of mixed nuts, packed with energy", 10));
+        room7.addItem(new Food("Protein Shake" , "A protein shake to aid in strength and recovery" ,30));
+
 
         // Room 8
         room8.setNorth(room5);
@@ -78,7 +86,13 @@ public class Map {
         room9.setNorth(room6);
         room9.setWest(room8);
         room9.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
-        room9.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
+        room9.addItem(new Item("Cooking knife", "A big cooking knife. It seems dangerous."));
+        room9.addItem(new Food("Apple", "A shiny red apple.", 15));
+
+        //Room 10
+        room10.setWest(room6);
+        room10.addItem(new Item("Toothbrush", "Does someone need brushing?"));
+        room10.addItem(new Food("Brie", "Innocent looking brie.", -100));
     }
 
     public Room getStarterRoom() {

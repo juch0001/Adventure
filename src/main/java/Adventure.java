@@ -38,11 +38,19 @@ public class Adventure {
         return player.dropItem(itemName);
     }
 
-    public Room showItemsInRoom(Room room) {
-        return player.showItemsInRoom(room);
-    }
-
     public Room showAvailableItems(Room room) {
         return player.showAvailableItems(room);
+    }
+
+    public String printHealthPoints() {
+    return player.printHealthDescription();
+    }
+
+    public int getHealth() {
+        return player.getHealth();
+    }
+
+    public FoodEnum eatFood(String itemName) {
+        return player.eatFood(itemName);
     }
 }

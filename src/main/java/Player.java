@@ -5,13 +5,61 @@ public class Player {
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
 
     private Room currentRoom;
+    private int health;
     private ArrayList<Item> inventory;
 
     public Player(Room currentRoom){
         this.inventory =new ArrayList<>();
         this.currentRoom = currentRoom;
+        this.health = 100;
     }
 
+    //TODO Health
+    public void sethealth(Item item) {
+        if (item instanceof Food) {
+            this.health += ((Food) item).getHealthPoints();
+        }
+        if (health > 100) {
+            health = 100;
+        }
+    }
+
+    public String printHealthDescription() {
+        String printHealthPoints = "";
+        if (health > 0 && health <= 20) {
+            printHealthPoints = "You are very low on health. You should eat something straight away.";
+        }
+        if (health <= 40) {
+            printHealthPoints = "You are low on health. You should consider eating something.";
+        }
+        if (health <= 60) {
+            printHealthPoints = "You have decent health. You can eat something, if you would like.";
+        }
+        if (health <= 80) {
+            printHealthPoints = "You have plenty of health.";
+        }
+        if (health <= 100) {
+            printHealthPoints = "You have full health.";
+        }
+        return printHealthPoints;
+    }
+
+    //TODO Eat
+    public FoodEnum eatFood(String itemName) {
+        Item eatItem = findItem(itemName);
+        if (eatItem instanceof Food) {
+            sethealth(eatItem);
+            inventory.remove(eatItem);
+            return FoodEnum.FOOD;
+        } else if (eatItem == null) {
+            return FoodEnum.NOT_FOUND;
+        } else {
+            return FoodEnum.NO_FOOD;
+        }
+    }
+
+
+    //TODO Inventory
     public Player showInventory() {
         ArrayList<Item> inventory = getInventory();
         if (inventory.isEmpty()){
@@ -25,6 +73,16 @@ public class Player {
         return null;
     }
 
+    public Item findItem (String itemName) {
+        for (Item item : inventory) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    //TODO Take item
     public boolean takeItem (String itemName) {
         for (Item item : currentRoom.getItemList()){
             if (item.getItemName().toLowerCase().equals(itemName.toLowerCase())){
@@ -36,15 +94,7 @@ public class Player {
         return false;
     }
 
-    public Item findItem (String itemName) {
-        for (Item item : inventory) {
-            if (item.getItemName().equalsIgnoreCase(itemName)) {
-                return item;
-            }
-        }
-        return null;
-    }
-
+    //TODO Drop item
     public Player dropItem (String itemName) {
         Item item = findItem(itemName);
         if (item != null) {
@@ -59,10 +109,6 @@ public class Player {
 
     public void dropItem(Item item) {
         inventory.remove(item);
-    }
-
-    public Room showItemsInRoom(Room room) {
-        return currentRoom.showItemsInRoom(room);
     }
 
     public Room showAvailableItems(Room room) {
@@ -101,10 +147,10 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
                     }
+                    System.out.println("\n Type Look, to see which items are in the room.");
                 } else {
-                    System.out.println(" Hvor skal du hen nu?");
+                    System.out.println("Where would you like to go?");
                 }
                 break;
             case "go east":
@@ -115,11 +161,10 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
-
                     }
+                    System.out.println("\n Type Look, to see which items are in the room.");
                 } else {
-                    System.out.println("Hvor skal du hen nu?");
+                    System.out.println("Where would you like to go?");
                 }
                 break;
 
@@ -131,11 +176,10 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
-
                     }
+                    System.out.println("\n Type Look, to see which items are in the room.");
                 } else {
-                    System.out.println("Hvor skal du hen nu?");
+                    System.out.println("Where would you like to go?");
                 }
                 break;
             case "go west":
@@ -146,10 +190,10 @@ public class Player {
                     System.out.println("You are now in " + currentRoom.getName());
                     System.out.println(currentRoom.getDescription());
                     for (Item item : currentRoom.getItemList()) {
-                        System.out.println("\n Type Look, for at se hvilket items der er i rummet");
                 }
+                    System.out.println("\n Type Look, to see which items are in the room.");
                 } else {
-                    System.out.println("Hvor skal du hen nu?");
+                    System.out.println("Where would you like to go?");
                 }
                 break;
             default:
@@ -166,11 +210,13 @@ public class Player {
         return inventory;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
+    
+
 }
-
-
- /*player.eat(foodname: "appel");
-    assertEquals(Returnmasses.ok,result);*/
