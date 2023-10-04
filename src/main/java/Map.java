@@ -40,11 +40,16 @@ public class Map {
         room2.setEast(room3);
         room2.addItem(new Item("Flashlight", "A flashlight to illuminate dark areas."));
         room2.addItem(new Item("Map", "A map to help you navigate the maze."));
+        room2.addItem(new Food("Carrot Stick" , " A fresh and crunchy carrot stick.", 10));
+        room2.addItem(new Food(" Rotten Cheese" , " A piece of cheese gone bad. Yuck! ", -30));
 
         //Room 3
         room3.setWest(room2);
         room3.setSouth(room6);
-        room3.addItem(new Item("rum3", "brug dette våben"));
+        room3.addItem(new Item("Compass", "A compass that points to the nearest exit or objective."));
+        room3.addItem(new Item("Shield" , "A sturdy shield for added defense."));
+        room3.addItem(new Food("Energy-Drink" , "A drink that boosts energy but isn't good for health." , -15));
+        room3.addItem(new Food("Pineapple Slice" , "A juicy slice of pineapple." , 15));
 
         //Room 4
         room4.setNorth(room1);
@@ -65,6 +70,7 @@ public class Map {
         room6.setEast(room10);
         room6.addItem(new Item("Gloves", "A pair of gloves to protect your paws."));
         room6.addItem(new Item("Empty Bucket", "A bucket that could be useful to carry things."));
+        room6.addItem(new Food("Sugary Donut", "A sugary donut, delicious but not very healthy" , -25));
 
         //Room 7
         room7.setNorth(room4);
@@ -81,6 +87,8 @@ public class Map {
         room8.setWest(room7);
         room8.addItem(new Item("Old Book", "An old book with strange symbols. What could it mean?"));
         room8.addItem(new Item("Candle", "A flickering candle that casts eerie shadows."));
+        room8.addItem(new Food("Cheese Platter" , "A platter with a variety of cheese." , 45));
+        room8.addItem(new Food("Buttercream", " A delectable dollop of creamy, smooth buttercream frosting, oozing with richness and sweetness." , -40));
 
         //Room 9
         room9.setNorth(room6);
