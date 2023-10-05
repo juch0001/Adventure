@@ -18,15 +18,27 @@ public class Player {
     }
 
     //TODO Attack
-    public Player attack(Player attack) {
-        if (equipWeapon(currentWeapon.getItemName()) == MeleeWeapon) {
+    public AttackEnum attack(Player attack) {
+        Item equippedItem = findItem(currentWeapon.getItemName());
+        if (equippedItem instanceof MeleeWeapon) {
+            setEnemyHealth(equippedItem);
             return AttackEnum.ATTACK_MELEE;
-        } else if () {
+        } else if (equippedItem instanceof RangedWeapon) {
+            setEnemyHealth(equippedItem);
             return AttackEnum.ATTACK_RANGED;
-        } else if () {
+        } else if (noget med ammo) {
             return AttackEnum.NO_AMMO;
-        } else if () {
+        } else if (equippedItem == null) {
             return AttackEnum.WEAPON_NOT_FOUND;
+        }
+    }
+
+    public void setEnemyHealth(Item item) {
+        if (item instanceof Weapon) {
+            this.enemyHealth += ((Weapon) item).getHealthPoints();
+        }
+        if (enemyHealth > 100) {
+            enemyHealth = 100;
         }
     }
 
