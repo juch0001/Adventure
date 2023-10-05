@@ -40,6 +40,15 @@ public class Room {
         itemList.add(item);
     }
 
+    public Item getItem (String itemName) {
+        for (Item item : itemList) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Item> getItemList() {
         return itemList;
     }
