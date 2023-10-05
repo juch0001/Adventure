@@ -5,12 +5,43 @@ public class Player {
 
     private Room currentRoom;
     private int health;
+    private Weapon currentWeapon;
+    private int enemyHealth;
+    private Player attack;
     private ArrayList<Item> inventory;
 
     public Player(Room currentRoom){
         this.inventory =new ArrayList<>();
         this.currentRoom = currentRoom;
-        this.health = 50;
+        this.health = 100;
+        this.enemyHealth = 100;
+    }
+
+    //TODO Attack
+    public Player attack(Player attack) {
+        if (equipWeapon(currentWeapon.getItemName()) == MeleeWeapon) {
+            return AttackEnum.ATTACK_MELEE;
+        } else if () {
+            return AttackEnum.ATTACK_RANGED;
+        } else if () {
+            return AttackEnum.NO_AMMO;
+        } else if () {
+            return AttackEnum.WEAPON_NOT_FOUND;
+        }
+    }
+
+    //TODO Equip
+    public WeaponEnum equipWeapon(String itemName) {
+        Item equipItem = findItem(itemName);
+        if (equipItem instanceof Weapon) {
+            currentWeapon = (Weapon) equipItem;
+            inventory.remove(equipItem);
+        return WeaponEnum.Weapon;
+        } else if (equipItem == null) {
+            return WeaponEnum.NOT_FOUND;
+        } else {
+            return WeaponEnum.NOT_WEAPON;
+        }
     }
 
     //TODO Health
@@ -216,5 +247,6 @@ public class Player {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
+
 
 }

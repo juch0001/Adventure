@@ -96,6 +96,16 @@ public class UserInterface {
             }else if(menu.contains("health")) {
                 System.out.println("Your health in points: " + adventure.getHealth());
                 System.out.println(adventure.printHealthDescription());
+            } else if (menu.contains("equip")) {
+                String[] command = menu.split(" ");
+                WeaponEnum isWeapon = adventure.equipWeapon(command[1]);
+                if (isWeapon == WeaponEnum.Weapon) {
+                    System.out.println("You have taken: " + command[1]);
+                } else if (isWeapon == WeaponEnum.NOT_FOUND) {
+                    System.out.println(command[1] + " is not available.");
+                } else if (isWeapon == WeaponEnum.NOT_WEAPON) {
+                    System.out.println("You cannot eat " + command[1]);
+                }
             }
         }
     }

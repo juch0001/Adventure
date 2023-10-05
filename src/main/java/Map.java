@@ -48,13 +48,13 @@ public class Map {
         room3.setSouth(room6);
         room3.addItem(new Item("Compass", " - A compass that points to the nearest exit or objective."));
         room3.addItem(new Item("Shield" , " - A sturdy shield for added defense."));
-        room3.addItem(new Food("EnergyDrink" , " - A drink that boosts energy but isn't good for health." , -15));
+        room3.addItem(new Food("Drink" , " - A drink that boosts energy but isn't good for health." , -15));
         room3.addItem(new Food("Pineapple" , " - A juicy slice of pineapple." , 15));
 
         //Room 4
         room4.setNorth(room1);
         room4.setSouth(room7);
-        room4.addItem(new Item("Hammer", " - A small hammer to help you fix things."));
+        room4.addItem(new MeleeWeapon("Claws", " - extensions of your claws.", -7));
         room4.addItem(new Item("Key", " - A mysterious key. Its purpose is unknown."));
         room4.addItem(new Food("Mushroom", " - A suspicious looking mushroom", -15));
         room4.addItem(new Food("Almonds" , " - Almonds coated in sweet honey glaze." , 25));
@@ -70,6 +70,7 @@ public class Map {
         room6.setEast(room10);
         room6.addItem(new Item("Gloves", " - A pair of gloves to protect your paws."));
         room6.addItem(new Item("Bucket", " - A bucket that could be useful to carry things."));
+        room6.addItem(new MeleeWeapon("Teeth", "Sharp metal extension to your teeth", -8));
         room6.addItem(new Food("Donut", " - A sugary donut, delicious but not very healthy" , -25));
 
         //Room 7
@@ -78,7 +79,7 @@ public class Map {
         room7.addItem(new Item("Book", " - An old book with strange symbols. What could it mean?"));
         room7.addItem(new Item("Boots" , " - Boots that enhance the player's movement speed temporarily."));
         room7.addItem(new Food("Nuts", " - A handful of mixed nuts, packed with energy", 10));
-        room7.addItem(new Food("ProteinShake" , " - A protein shake to aid in strength and recovery" ,30));
+        room7.addItem(new Food("Shake" , " - A protein shake to aid in strength and recovery" ,30));
 
 
         // Room 8
