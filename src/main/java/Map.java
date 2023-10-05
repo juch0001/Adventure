@@ -32,9 +32,8 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(new Item("Flowerbomb", " - A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
-        room1.addItem(new Item("Sword" , " - A sharp sword for defense and combat."));
+        room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , -15));
         room1.addItem(new Food("Cheese", " - A tasty slice of cheese for a hungry mouse.", 10));
-
         //Room 2
         room2.setWest(room1);
         room2.setEast(room3);
@@ -42,6 +41,7 @@ public class Map {
         room2.addItem(new Item("Map", " - A map to help you navigate the maze."));
         room2.addItem(new Food("Carrot" , " - A fresh and crunchy carrot stick.", 10));
         room2.addItem(new Food("Cheese" , " - A piece of cheese gone bad. Yuck! ", -30));
+        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , -20));
 
         //Room 3
         room3.setWest(room2);
@@ -94,7 +94,7 @@ public class Map {
         room9.setNorth(room6);
         room9.setWest(room8);
         room9.addItem(new Item("Candle", " - A flickering candle that casts eerie shadows."));
-        room9.addItem(new Item("Knife", " - A big cooking knife. It seems dangerous."));
+        room9.addItem(new MeleeWeapon("Knife", " - A big cooking knife. It seems dangerous." , -10));
         room9.addItem(new Food("Apple", " - A shiny red apple.", 15));
 
         //Room 10

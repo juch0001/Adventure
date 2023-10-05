@@ -51,4 +51,9 @@ public class Adventure {
     public FoodEnum eatFood(String food) {
         return player.eatFood(food);
     }
+
+    public WeaponEnum equipWeapon(String weapon) {
+        return player.equipWeapon(weapon);
+    }
+
 }
