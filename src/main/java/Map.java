@@ -41,7 +41,7 @@ public class Map {
         room2.addItem(new Item("Map", " - A map to help you navigate the maze."));
         room2.addItem(new Food("Carrot" , " - A fresh and crunchy carrot stick.", 10));
         room2.addItem(new Food("Cheese" , " - A piece of cheese gone bad. Yuck! ", -30));
-        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , -20));
+        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , -20, 20));
 
         //Room 3
         room3.setWest(room2);
