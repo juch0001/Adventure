@@ -10,8 +10,8 @@ public class Player {
     private Player attack;
     private ArrayList<Item> inventory;
 
-    public Player(Room currentRoom){
-        this.inventory =new ArrayList<>();
+    public Player(Room currentRoom) {
+        this.inventory = new ArrayList<>();
         this.currentRoom = currentRoom;
         this.health = 100;
         this.enemyHealth = 100;
@@ -26,10 +26,17 @@ public class Player {
         } else if (equippedItem instanceof RangedWeapon) {
 
             return AttackEnum.ATTACK_RANGED;
-        } else if (noget med ammo) {
+        } else if (currentWeapon.getAmmo() < 1) {
             return AttackEnum.NO_AMMO;
         } else if (equippedItem == null) {
             return AttackEnum.WEAPON_NOT_FOUND;
+        }
+    }
+
+    public void attack (Enemy enemy) {
+        if (currentWeapon == null) {
+            System.out.println("no weapon equip. cannot attack.");
+            return;
         }
     }
 

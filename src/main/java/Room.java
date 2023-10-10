@@ -40,6 +40,10 @@ public class Room {
         itemList.add(item);
     }
 
+    public void addEnemy (Enemy enemy) {
+        enemy.addEnemy(enemy);
+    }
+
     public ArrayList<Item> getItemList() {
         return itemList;
     }
