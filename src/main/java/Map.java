@@ -34,6 +34,7 @@ public class Map {
         room1.addItem(new Item("Flowerbomb", " - A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
         room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , -15));
         room1.addItem(new Food("Cheese", " - A tasty slice of cheese for a hungry mouse.", 10));
+
         //Room 2
         room2.setWest(room1);
         room2.setEast(room3);
@@ -41,7 +42,8 @@ public class Map {
         room2.addItem(new Item("Map", " - A map to help you navigate the maze."));
         room2.addItem(new Food("Carrot" , " - A fresh and crunchy carrot stick.", 10));
         room2.addItem(new Food("Cheese" , " - A piece of cheese gone bad. Yuck! ", -30));
-        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , -20, 20));
+        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , -20, 5));
+        room2.addEnemy(new Enemy("Feet", "A humans feet, tippy tapping around", "Feet", 100));
 
         //Room 3
         room3.setWest(room2);
@@ -50,6 +52,7 @@ public class Map {
         room3.addItem(new Item("Shield" , " - A sturdy shield for added defense."));
         room3.addItem(new Food("Drink" , " - A drink that boosts energy but isn't good for health." , -15));
         room3.addItem(new Food("Pineapple" , " - A juicy slice of pineapple." , 15));
+
 
         //Room 4
         room4.setNorth(room1);
@@ -80,6 +83,7 @@ public class Map {
         room7.addItem(new Item("Boots" , " - Boots that enhance the player's movement speed temporarily."));
         room7.addItem(new Food("Nuts", " - A handful of mixed nuts, packed with energy", 10));
         room7.addItem(new Food("Shake" , " - A protein shake to aid in strength and recovery" ,30));
+        room7.addEnemy(new Enemy("Book", "A human arm holding a book", "book", 100));
 
 
         // Room 8
@@ -90,6 +94,7 @@ public class Map {
         room8.addItem(new Item("Candle", " - A flickering candle that casts eerie shadows."));
         room8.addItem(new Food("Platter" , " - A platter with a variety of cheese." , 45));
         room8.addItem(new Food("Buttercream", " - A delectable dollop of creamy, smooth buttercream frosting, oozing with richness and sweetness." , -40));
+        room8.addEnemy(new Enemy("Cat" , "dangerous kitty cat, with only one eye", "claws" , 95));
 
         //Room 9
         room9.setNorth(room6);

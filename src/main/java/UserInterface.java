@@ -106,6 +106,18 @@ public class UserInterface {
                 } else if (isWeapon == WeaponEnum.NOT_WEAPON) {
                     System.out.println("You cannot eat " + command[1]);
                 }
+            }else if (menu.contains("attack")) {
+                String[] command = menu.split(" ");
+                AttackEnum attackPossible = adventure.attack(command[1]);
+                if (attackPossible == AttackEnum.ATTACK_MELEE) {
+                    System.out.println("You attack: " + command[1] + " " /* damage*/);
+                } else if (attackPossible == AttackEnum.ATTACK_RANGED) {
+                    System.out.println("You shoot: " + command[1] + "for " /* damage*/);
+                } else if (attackPossible == AttackEnum.NO_AMMO) {
+                    System.out.println("You have no ammo left.");
+                } else if (attackPossible == AttackEnum.WEAPON_NOT_FOUND) {
+                    System.out.println("You have no weapon equipped.");
+                }
             }
         }
     }

@@ -56,4 +56,7 @@ public class Adventure {
         return player.equipWeapon(weapon);
     }
 
+    public AttackEnum attack(String itemName) {
+        return player.attack(itemName);
+    }
 }

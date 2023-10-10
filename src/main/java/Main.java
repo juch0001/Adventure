@@ -5,3 +5,9 @@ public class Main {
         ui.startGame();
     }
 }
+
+
+//Playerdead
+//Enemydead
+//Enemy
+//
