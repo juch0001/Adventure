@@ -8,48 +8,49 @@ public class Player {
     private Weapon currentWeapon;
     private Enemy currentEnemy;
     private ArrayList<Item> inventory;
+    private  ArrayList <Enemy> enemies;
 
     public Player(Room currentRoom) {
         this.inventory = new ArrayList<>();
+        this.enemies = new ArrayList<>();
         this.currentRoom = currentRoom;
         this.currentEnemy = currentEnemy;
         this.health = 100;
+        this.currentWeapon = null;
     }
 
     //TODO Enemy
 
-    public void setEnemyHealth(Enemy enemy) {
-
-    }
-
 
     //TODO Attack
-    public AttackEnum attack(String itemName) {
-        if (currentWeapon instanceof MeleeWeapon) {
-
-            currentWeapon.getDamage() += ((Enemy) ).getEnemyHealth();
-
-
-            return AttackEnum.ATTACK_MELEE;
-        } else if (currentWeapon instanceof RangedWeapon) {
-
-
-            currentWeapon.getDamage() += ((Enemy) ).getEnemyHealth();
-
-            return AttackEnum.ATTACK_RANGED;
-        } else if (currentWeapon.getAmmo() < 1) {
-            return AttackEnum.NO_AMMO;
-        } else {
+    public AttackEnum attack(Enemy enemy) {
+        if (currentWeapon == null) {
+            System.out.println("No weapon equipped. Cannot attack.");
             return AttackEnum.WEAPON_NOT_FOUND;
         }
+        int playerDamage = currentWeapon.getDamage();
+        int enemyDamage = currentWeapon.getDamage();
+
+        enemy.damageHealth(enemyDamage);
+        this.health -= enemyDamage;
+
+        if (this.health <= 0) {
+            System.out.println("You have been defeated.");
+        }
+        return (currentWeapon instanceof MeleeWeapon) ? AttackEnum.ATTACK_MELEE : AttackEnum.ATTACK_RANGED;
     }
 
-    public void attack (Enemy enemy) {
-        if (currentWeapon == null) {
-            System.out.println("no weapon equip. cannot attack.");
-            return;
+    public Enemy findEnemyByName (String enemyName) {
+        for (Enemy enemy : enemies) {
+            if (enemy.getEnemyName().equalsIgnoreCase(enemyName)){
+                return enemy;
+            }
         }
+        return null;
     }
+
+
+
 
     //TODO Equip
     public WeaponEnum equipWeapon(String itemName) {
@@ -57,7 +58,7 @@ public class Player {
         if (equipItem instanceof Weapon) {
             currentWeapon = (Weapon) equipItem;
             inventory.remove(equipItem);
-        return WeaponEnum.Weapon;
+        return (equipItem instanceof Weapon) ? WeaponEnum.Weapon: WeaponEnum.NOT_WEAPON;
         } else if (equipItem == null) {
             return WeaponEnum.NOT_FOUND;
         } else {
@@ -260,6 +261,7 @@ public class Player {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+
 
     public int getHealth() {
         return health;

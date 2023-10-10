@@ -9,6 +9,7 @@ public class Room {
     private Room east;
     private Room west;
     private ArrayList <Item> itemList;
+    private ArrayList <Enemy> enemyList;
     private Enemy enemy;
 
     public Room (String name, String description){
@@ -19,6 +20,7 @@ public class Room {
         this.north = null;
         this.south = null;
         this.itemList =new ArrayList<>();
+        enemyList = new ArrayList<>();
     }
 
     public Room showAvailableItems(Room room) {
@@ -42,7 +44,32 @@ public class Room {
     }
 
     public void addEnemy (Enemy enemy) {
-        enemy.addEnemy(enemy);
+     enemyList.add(enemy);
+    }
+
+    public Enemy findEnemyByName (String enemyName) {
+        for (Enemy enemy : enemyList) {
+            if (enemy.getEnemyName().equalsIgnoreCase(enemyName)){
+                return enemy;
+            }
+        }
+        return null;
+    }
+
+    public void showAvailableEnemies () {
+        if (!enemyList.isEmpty()) {
+            System.out.println("Enemies in the room: ");
+            for (Enemy enemy : enemyList) {
+                System.out.println("- " + enemy.getEnemyName());
+            }
+        } else {
+            System.out.println("There are no enemies in this room.");
+        }
+    }
+
+
+    public ArrayList<Enemy> getEnemyList() {
+        return enemyList;
     }
 
     public ArrayList<Item> getItemList() {

@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Adventure {
 
     private Map map = new Map();
@@ -40,6 +42,19 @@ public class Adventure {
         return player.showAvailableItems(room);
     }
 
+    public void showAvalableEnemies (Room room) {
+        List <Enemy> enemies = room.getEnemyList();
+
+        if (!enemies.isEmpty()) {
+            System.out.println("Enemies in this room: ");
+            for (Enemy enemy : enemies) {
+                System.out.println(enemy.getEnemyName() + "- " + enemy.getEnemyDescription());
+            }
+        } else {
+            System.out.println("There are no enemies in this room.");
+        }
+    }
+
     public String printHealthDescription() {
     return player.printHealthDescription();
     }
@@ -56,7 +71,7 @@ public class Adventure {
         return player.equipWeapon(weapon);
     }
 
-    public AttackEnum attack(String itemName) {
-        return player.attack(itemName);
+    public AttackEnum attack(Enemy enemy) {
+        return player.attack(enemy);
     }
 }

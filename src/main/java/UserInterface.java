@@ -67,6 +67,7 @@ public class UserInterface {
                 Room currentRoom = adventure.getCurrentRoom();
                 System.out.println(currentRoom.getDescription());
                 adventure.showAvailableItems(currentRoom);
+                adventure.showAvalableEnemies(currentRoom);
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             } else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
@@ -81,7 +82,7 @@ public class UserInterface {
                 }
             } else if (menu.startsWith("drop")) {
                 adventure.dropItem(menu.substring(5));
-            }else if (menu.contains("eat")) {
+            } else if (menu.contains("eat")) {
                 String[] command = menu.split(" ");
                 FoodEnum isFood = adventure.eatFood(command[1]);
                 if (isFood == FoodEnum.FOOD) {
@@ -93,7 +94,7 @@ public class UserInterface {
                 } else if (isFood == FoodEnum.NO_FOOD) {
                     System.out.println("You cannot eat " + command[1]);
                 }
-            }else if(menu.contains("health")) {
+            } else if (menu.contains("health")) {
                 System.out.println("Your health in points: " + adventure.getHealth());
                 System.out.println(adventure.printHealthDescription());
             } else if (menu.contains("equip")) {
@@ -106,19 +107,35 @@ public class UserInterface {
                 } else if (isWeapon == WeaponEnum.NOT_WEAPON) {
                     System.out.println("You cannot eat " + command[1]);
                 }
-            }else if (menu.contains("attack")) {
-                String[] command = menu.split(" ");
-                AttackEnum attackPossible = adventure.attack(command[1]);
-                if (attackPossible == AttackEnum.ATTACK_MELEE) {
-                    System.out.println("You attack: " + command[1] + " " /* damage*/);
-                } else if (attackPossible == AttackEnum.ATTACK_RANGED) {
-                    System.out.println("You shoot: " + command[1] + "for " /* damage*/);
-                } else if (attackPossible == AttackEnum.NO_AMMO) {
-                    System.out.println("You have no ammo left.");
-                } else if (attackPossible == AttackEnum.WEAPON_NOT_FOUND) {
-                    System.out.println("You have no weapon equipped.");
+            } else if (menu.startsWith("attack")) {
+                String enemyName = menu.substring(7).toLowerCase();
+                Enemy enemy = adventure.getPlayer().getCurrentRoom().findEnemyByName(enemyName);
+                if (enemy != null) {
+                    AttackEnum attackPossible = adventure.getPlayer().attack(enemy);
+                    if (attackPossible == AttackEnum.ATTACK_MELEE){
+                        System.out.println("You attack: " + enemyName);
+                        System.out.println("You dealt damage to " + enemyName + ".");
+                        System.out.println("Yor health: " + adventure.getPlayer().getHealth());
+                        if (enemy.getEnemyHealth() > 0)
+                            System.out.println(enemyName + "health: " + enemy.getEnemyHealth());
+                        else
+                            System.out.println("You defeated " + enemyName + "!");
+                    } else if (attackPossible == AttackEnum.ATTACK_RANGED) {
+                        System.out.println("You shoot: " + enemyName);
+                        System.out.println("Yoy shoot at " + enemyName + ".");
+                        System.out.println("Your health: " + adventure.getPlayer().getHealth());
+                        if (enemy.getEnemyHealth() >0)
+                            System.out.println(enemyName + " health: " + enemy.getEnemyHealth());
+                        else
+                            System.out.println("You defeated " + enemyName + "!");
+                    } else if (attackPossible == AttackEnum.NO_AMMO) {
+                        System.out.println("You have no ammo left. ");
+                    } else if (attackPossible == AttackEnum.WEAPON_NOT_FOUND) {
+                    }
+                } else {
+                    System.out.println("No enemy found with the name: " + enemyName);
+                }
+                        }
+                    }
                 }
             }
-        }
-    }
-}
