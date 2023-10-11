@@ -124,11 +124,17 @@ public class UserInterface {
                         System.out.println("You shoot: " + enemyName);
                         System.out.println("Yoy shoot at " + enemyName + ".");
                         System.out.println("Your health: " + adventure.getPlayer().getHealth());
-                        if (enemy.getEnemyHealth() >0)
+                        if (enemy.getEnemyHealth() > 0)
                             System.out.println(enemyName + " health: " + enemy.getEnemyHealth());
                         else
                             System.out.println("You defeated " + enemyName + "!");
-                    } else if (attackPossible == AttackEnum.NO_AMMO) {
+                    /*} else if (attackPossible == AttackEnum.ATTACK_RANGED) {
+                        System.out.println("You attack: " + enemyName);
+                        System.out.println("You attack at " + enemyName + ".");
+                        System.out.println("Your health: " + adventure.getPlayer().getHealth());
+                        if (enemy.getEnemyHealth() > 0)*/
+
+                } else if (attackPossible == AttackEnum.NO_AMMO) {
                         System.out.println("You have no ammo left. ");
                     } else if (attackPossible == AttackEnum.WEAPON_NOT_FOUND) {
                     }

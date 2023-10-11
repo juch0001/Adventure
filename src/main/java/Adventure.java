@@ -71,7 +71,7 @@ public class Adventure {
         return player.equipWeapon(weapon);
     }
 
-    public AttackEnum attack(Enemy enemy) {
-        return player.attack(enemy);
+    public void resetGame() {
+        buildMap();
     }
 }

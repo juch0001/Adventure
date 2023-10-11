@@ -8,19 +8,51 @@ public class Player {
     private Weapon currentWeapon;
     private Enemy currentEnemy;
     private ArrayList<Item> inventory;
-    private  ArrayList <Enemy> enemies;
 
     public Player(Room currentRoom) {
         this.inventory = new ArrayList<>();
-        this.enemies = new ArrayList<>();
         this.currentRoom = currentRoom;
-        this.currentEnemy = currentEnemy;
         this.health = 100;
         this.currentWeapon = null;
     }
 
-    //TODO Enemy
 
+
+    //TODO Enemy attack
+    public AttackEnum enemyAttack(Enemy enemy) {
+        if (currentEnemy.getEnemyWeapon()== null) {
+            System.out.println("");
+            return AttackEnum.NO_AMMO;
+
+            int playerDamage = currentWeapon.getDamage();
+            int enemyDamage = currentEnemy.getEnemyWeapon().getDamage();
+            getHealth(enemyDamage);
+            this.health -= enemyDamage;
+
+
+        } else if (enemy.getEnemyHealth() > 0){
+            System.out.println("You damage to " + enemy.getEnemyName() + ".");
+
+
+            int enemyDamage = currentWeapon.getDamage();
+
+
+            setHealth(enemyDamage);
+        this.health -= enemyDamage;
+
+        return AttackEnum.ATTACKED;
+
+        }else if(this.health <= 0){
+            System.out.println("You have been defeated.");
+            // TODO Reset spillet
+            return AttackEnum.PLAYER_DEAD;
+        }
+        return null;
+    }
+
+    public void receiveDamage (int damage) {
+        this.health -= damage;
+    }
 
     //TODO Attack
     public AttackEnum attack(Enemy enemy) {
@@ -270,6 +302,4 @@ public class Player {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
-
-
 }

@@ -47,6 +47,7 @@ public class Room {
      enemyList.add(enemy);
     }
 
+
     public Enemy findEnemyByName (String enemyName) {
         for (Enemy enemy : enemyList) {
             if (enemy.getEnemyName().equalsIgnoreCase(enemyName)){
@@ -118,7 +119,6 @@ public class Room {
     public void setWest(Room west){
         this.west=west;
     }
-
 
 
 }
