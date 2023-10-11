@@ -11,6 +11,7 @@ public class Player {
     private Weapon currentWeapon;
     private Enemy currentEnemy;
     private ArrayList<Item> inventory;
+    private ArrayList<Weapon> weaponList;
 
     public Player(Room currentRoom) {
         this.inventory = new ArrayList<>();
@@ -69,16 +70,16 @@ public class Player {
         if (enemyHealth <= 0) {
             return AttackEnum.ENEMY_DEAD;
             //TODO Enemy drop weapon
-            /*
-            Item item = findItem(itemName);
-            dropItem(item);
-            currentRoom.addItem(item);
-            System.out.println("Enemy has dropped " + item.getItemName());
-            */
+
+            currentEnemy.getEnemyWeapon().remove(weaponList);
+            currentRoom.addItem(currentEnemy.getEnemyWeapon());
+            System.out.println("Enemy has dropped " + currentEnemy.getEnemyWeapon());
+
             //TODO Enemy disappears
 
         } else {
             enemyDamage = currentEnemy.getEnemyWeapon();
+
 
             setHealth(enemyDamage);
             this.health -= enemyDamage;

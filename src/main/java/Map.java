@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Map {
 
     private Room currentRoom;
-    //public ArrayList<Weapon> weapon = new ArrayList<>();
+    public ArrayList<Weapon> weaponList = new ArrayList<>();
 
     public void buildMap() {
         Room room1 = new Room("Room 1 ","You are in something that looks like a basement, with a bit of food as well as some barrels scattered around." +
@@ -124,4 +124,5 @@ public class Map {
     Weapon shoes = new MeleeWeapon("Shoes", "Shoes the human was wearing", 15);
     Weapon claws = new MeleeWeapon("Claws","Far reaching legs with sharp claws", 15);
     Weapon book = new MeleeWeapon("Book", "Long arms with a book, it might get worn out after a while", 20);
+
 }
