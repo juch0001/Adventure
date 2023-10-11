@@ -35,7 +35,7 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(new Item("Flowerbomb", " - A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
-        room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , 100));
+        room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , 20));
         room1.addItem(new Food("Cheese", " - A tasty slice of cheese for a hungry mouse.", 10));
 
         //Room 2
@@ -98,7 +98,7 @@ public class Map {
         room8.addItem(new Item("Candle", " - A flickering candle that casts eerie shadows."));
         room8.addItem(new Food("Platter" , " - A platter with a variety of cheese." , 45));
         room8.addItem(new Food("Buttercream", " - A delectable dollop of creamy, smooth buttercream frosting, oozing with richness and sweetness." , -40));
-        room8.addEnemy(new Enemy("Cat" , "dangerous kitty cat, with only one eye", claws, 95));
+        room8.addEnemy(new Enemy("Cat" , "dangerous kitty cat, with only one eye", claws, 100));
 
         //Room 9
         room9.setNorth(room6);

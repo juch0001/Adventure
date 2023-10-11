@@ -7,3 +7,5 @@ public class Main {
 }
 
 //Enemy drop weapon
+//Enemy disappear
+//Fjerne ubrugte metoder

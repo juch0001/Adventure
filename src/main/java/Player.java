@@ -68,6 +68,15 @@ public class Player {
 
         if (enemyHealth <= 0) {
             return AttackEnum.ENEMY_DEAD;
+            //TODO Enemy drop weapon
+            /*
+            Item item = findItem(itemName);
+            dropItem(item);
+            currentRoom.addItem(item);
+            System.out.println("Enemy has dropped " + item.getItemName());
+            */
+            //TODO Enemy disappears
+
         } else {
             enemyDamage = currentEnemy.getEnemyWeapon();
 
