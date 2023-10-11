@@ -5,23 +5,27 @@ public class Player {
 
     private Room currentRoom;
     private int health;
+    private int enemyHealth;
+    private int playerDamage;
+    private Weapon enemyDamage;
     private Weapon currentWeapon;
-    private int currentEnemy;
+    private Enemy currentEnemy;
     private ArrayList<Item> inventory;
 
     public Player(Room currentRoom) {
         this.inventory = new ArrayList<>();
         this.currentRoom = currentRoom;
         this.health = 100;
+        this.enemyHealth = 100 ;
         this.currentWeapon = null;
-        this.currentEnemy = 100 ;
+        this.currentEnemy = null;
     }
 
 
 
     //TODO Enemy attack
-    public AttackEnum enemyAttack(Enemy enemy) {
-        if (currentEnemy.getEnemyWeapon()== null) {
+   /* public AttackEnum enemyAttack(Enemy enemy) {
+        if (enemy attack after player) {
 
             int playerDamage = currentWeapon.getDamage();
             int enemyDamage = currentEnemy.getEnemyWeapon().getDamage();
@@ -48,26 +52,31 @@ public class Player {
             return AttackEnum.PLAYER_DEAD;
         }
         return null;
-    }
+    }*/
 
     public void receiveDamage (int damage) {
         this.health -= damage;
     }
-    int playerDamage;
 
-    public int getPlayerDamage() {
-        return playerDamage;
-    }
 
     //TODO Attack
     public AttackEnum attack(Enemy enemy) {
         playerDamage = currentWeapon.getDamage();
 
         enemy.setEnemyHealth(playerDamage);
-        this.currentEnemy -= playerDamage;
+        this.enemyHealth -= playerDamage;
 
-        if (currentEnemy <= 0) {
+        if (enemyHealth <= 0) {
             return AttackEnum.ENEMY_DEAD;
+        } else {
+            enemyDamage = currentEnemy.getEnemyWeapon();
+
+            setHealth(enemyDamage);
+            this.health -= enemyDamage;
+
+            if (health <= 0) {
+                return AttackEnum.PLAYER_DEAD;
+            }
         }
         return (currentWeapon instanceof MeleeWeapon) ? AttackEnum.ATTACK_MELEE : AttackEnum.ATTACK_RANGED;
     }
@@ -90,9 +99,10 @@ public class Player {
     public void setHealth(Item item) {
         if (item instanceof Food) {
             this.health += ((Food) item).getHealthPoints();
-        }
-        if (health > 100) {
+        }if (health > 100) {
             health = 100;
+        } else if (item instanceof Weapon) {
+            this.health -= currentEnemy.getEnemyWeapon();
         }
     }
 
@@ -288,5 +298,9 @@ public class Player {
 
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
+    }
+
+    public int getPlayerDamage() {
+        return playerDamage;
     }
 }

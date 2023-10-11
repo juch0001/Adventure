@@ -134,6 +134,8 @@ public class UserInterface {
 
                     }else if (attackPossible == AttackEnum.ENEMY_DEAD) {
                         System.out.println("You defeated " + enemyName + "!");
+                    } else if (attackPossible == AttackEnum.PLAYER_DEAD) {
+                        System.out.println("You have been defeated");
                     }
                 } else {
                     System.out.println("No enemy found with the name: " + enemyName);
