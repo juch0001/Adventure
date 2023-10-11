@@ -74,4 +74,8 @@ public class Adventure {
     public void resetGame() {
         buildMap();
     }
+
+    public int getPlayerDamage() {
+        return player.getPlayerDamage();
+    }
 }

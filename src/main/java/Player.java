@@ -6,7 +6,7 @@ public class Player {
     private Room currentRoom;
     private int health;
     private Weapon currentWeapon;
-    private Enemy currentEnemy;
+    private int currentEnemy;
     private ArrayList<Item> inventory;
 
     public Player(Room currentRoom) {
@@ -14,6 +14,7 @@ public class Player {
         this.currentRoom = currentRoom;
         this.health = 100;
         this.currentWeapon = null;
+        this.currentEnemy = 100 ;
     }
 
 
@@ -21,11 +22,10 @@ public class Player {
     //TODO Enemy attack
     public AttackEnum enemyAttack(Enemy enemy) {
         if (currentEnemy.getEnemyWeapon()== null) {
-            System.out.println("");
-            return AttackEnum.NO_AMMO;
 
             int playerDamage = currentWeapon.getDamage();
             int enemyDamage = currentEnemy.getEnemyWeapon().getDamage();
+
             getHealth(enemyDamage);
             this.health -= enemyDamage;
 
@@ -53,20 +53,20 @@ public class Player {
     public void receiveDamage (int damage) {
         this.health -= damage;
     }
+    int playerDamage;
+
+    public int getPlayerDamage() {
+        return playerDamage;
+    }
 
     //TODO Attack
     public AttackEnum attack(Enemy enemy) {
-        if (currentWeapon == null) {
-            System.out.println("No weapon equipped. Cannot attack.");
-            return AttackEnum.WEAPON_NOT_FOUND;
-        }
-
-        int playerDamage = currentWeapon.getDamage();
+        playerDamage = currentWeapon.getDamage();
 
         enemy.setEnemyHealth(playerDamage);
-        this.currentEnemy.setEnemyHealth(playerDamage);
+        this.currentEnemy -= playerDamage;
 
-        if (currentEnemy.getEnemyHealth() <= 0) {
+        if (currentEnemy <= 0) {
             return AttackEnum.ENEMY_DEAD;
         }
         return (currentWeapon instanceof MeleeWeapon) ? AttackEnum.ATTACK_MELEE : AttackEnum.ATTACK_RANGED;
