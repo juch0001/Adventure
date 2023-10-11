@@ -6,8 +6,4 @@ public class Main {
     }
 }
 
-
-//Playerdead
-//Enemydead
-//Enemy
-//
+//Enemy drop weapon

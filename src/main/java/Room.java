@@ -9,8 +9,7 @@ public class Room {
     private Room east;
     private Room west;
     private ArrayList <Item> itemList;
-    private ArrayList <Enemy> enemyList;
-    private Enemy enemy;
+    private ArrayList <Enemy> enemyList = new ArrayList<>();
 
     public Room (String name, String description){
         this.name = name;

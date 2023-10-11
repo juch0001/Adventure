@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+
 public class Map {
 
     private Room currentRoom;
+    public ArrayList<Weapon> weapon = new ArrayList<>();
 
     public void buildMap() {
         Room room1 = new Room("Room 1 ","You are in something that looks like a basement, with a bit of food as well as some barrels scattered around." +
@@ -32,7 +35,7 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(new Item("Flowerbomb", " - A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
-        room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , -15));
+        room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , 15));
         room1.addItem(new Food("Cheese", " - A tasty slice of cheese for a hungry mouse.", 10));
 
         //Room 2
@@ -42,8 +45,9 @@ public class Map {
         room2.addItem(new Item("Map", " - A map to help you navigate the maze."));
         room2.addItem(new Food("Carrot" , " - A fresh and crunchy carrot stick.", 10));
         room2.addItem(new Food("Cheese" , " - A piece of cheese gone bad. Yuck! ", -30));
-        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , -20, 5));
-        room2.addEnemy(new Enemy("Feet", "A humans feet, tippy tapping around", "Feet", 100));
+        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , 20, 5));
+        room2.addEnemy(new Enemy("Feet", "A humans feet, tippy tapping around", weapon.get(1), 100));
+        room2.addItem(new MeleeWeapon("Shoes", "The shoes the human was wearing", 15));
 
         //Room 3
         room3.setWest(room2);
@@ -57,7 +61,7 @@ public class Map {
         //Room 4
         room4.setNorth(room1);
         room4.setSouth(room7);
-        room4.addItem(new MeleeWeapon("Claws", " - extensions of your claws.", -7));
+        room4.addItem(new MeleeWeapon("Claws", " - extensions of your claws.", 7));
         room4.addItem(new Item("Key", " - A mysterious key. Its purpose is unknown."));
         room4.addItem(new Food("Mushroom", " - A suspicious looking mushroom", -15));
         room4.addItem(new Food("Almonds" , " - Almonds coated in sweet honey glaze." , 25));
@@ -73,7 +77,7 @@ public class Map {
         room6.setEast(room10);
         room6.addItem(new Item("Gloves", " - A pair of gloves to protect your paws."));
         room6.addItem(new Item("Bucket", " - A bucket that could be useful to carry things."));
-        room6.addItem(new MeleeWeapon("Teeth", "Sharp metal extension to your teeth", -8));
+        room6.addItem(new MeleeWeapon("Teeth", "Sharp metal extension to your teeth", 8));
         room6.addItem(new Food("Donut", " - A sugary donut, delicious but not very healthy" , -25));
 
         //Room 7
@@ -83,7 +87,7 @@ public class Map {
         room7.addItem(new Item("Boots" , " - Boots that enhance the player's movement speed temporarily."));
         room7.addItem(new Food("Nuts", " - A handful of mixed nuts, packed with energy", 10));
         room7.addItem(new Food("Shake" , " - A protein shake to aid in strength and recovery" ,30));
-        room7.addEnemy(new Enemy("Book", "A human arm holding a book", "book", 100));
+        room7.addEnemy(new Enemy("Book", "A human arm holding a book", weapon.get(3), 100));
 
 
         // Room 8
@@ -94,13 +98,13 @@ public class Map {
         room8.addItem(new Item("Candle", " - A flickering candle that casts eerie shadows."));
         room8.addItem(new Food("Platter" , " - A platter with a variety of cheese." , 45));
         room8.addItem(new Food("Buttercream", " - A delectable dollop of creamy, smooth buttercream frosting, oozing with richness and sweetness." , -40));
-        room8.addEnemy(new Enemy("Cat" , "dangerous kitty cat, with only one eye", "claws" , 95));
+        room8.addEnemy(new Enemy("Cat" , "dangerous kitty cat, with only one eye", weapon.get(2), 95));
 
         //Room 9
         room9.setNorth(room6);
         room9.setWest(room8);
         room9.addItem(new Item("Candle", " - A flickering candle that casts eerie shadows."));
-        room9.addItem(new MeleeWeapon("Knife", " - A big cooking knife. It seems dangerous." , -10));
+        room9.addItem(new MeleeWeapon("Knife", " - A big cooking knife. It seems dangerous." , 10));
         room9.addItem(new Food("Apple", " - A shiny red apple.", 15));
 
         //Room 10
@@ -115,5 +119,11 @@ public class Map {
 
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    public void getEnemyWeapons() {
+        weapon.add(new MeleeWeapon("Shoes", "Shoes left behind by the human", 15));
+        weapon.add(new RangedWeapon("Claws","Far reaching legs with sharp claws", 15, 15));
+        weapon.add(new RangedWeapon("Book", "Long arms with a book, it might get worn out after a while", 20, 10));
     }
 }

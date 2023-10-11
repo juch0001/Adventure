@@ -60,29 +60,17 @@ public class Player {
             System.out.println("No weapon equipped. Cannot attack.");
             return AttackEnum.WEAPON_NOT_FOUND;
         }
+
         int playerDamage = currentWeapon.getDamage();
-        int enemyDamage = currentWeapon.getDamage();
 
-        enemy.damageHealth(enemyDamage);
-        this.health -= enemyDamage;
+        enemy.setEnemyHealth(playerDamage);
+        this.currentEnemy.setEnemyHealth(playerDamage);
 
-        if (this.health <= 0) {
-            System.out.println("You have been defeated.");
+        if (currentEnemy.getEnemyHealth() <= 0) {
+            return AttackEnum.ENEMY_DEAD;
         }
         return (currentWeapon instanceof MeleeWeapon) ? AttackEnum.ATTACK_MELEE : AttackEnum.ATTACK_RANGED;
     }
-
-    public Enemy findEnemyByName (String enemyName) {
-        for (Enemy enemy : enemies) {
-            if (enemy.getEnemyName().equalsIgnoreCase(enemyName)){
-                return enemy;
-            }
-        }
-        return null;
-    }
-
-
-
 
     //TODO Equip
     public WeaponEnum equipWeapon(String itemName) {
@@ -141,7 +129,6 @@ public class Player {
             return FoodEnum.NO_FOOD;
         }
     }
-
 
     //TODO Inventory
     public Player showInventory() {
