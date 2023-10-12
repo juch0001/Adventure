@@ -75,4 +75,17 @@ public class Adventure {
     public int getPlayerDamage() {
         return player.getPlayerDamage();
     }
+
+    public Enemy dropWeapon (Weapon enemyWeapon) {
+        map.weaponList.remove(enemyWeapon);
+        map.getCurrentRoom().addItem(enemyWeapon);
+        System.out.println("Enemy has dropped " + enemyWeapon.getItemName());
+        return null;
+    }
+
+    public Enemy removeEnemy (Enemy enemyName) {
+        map.getCurrentRoom().getEnemyList().remove(enemyName);
+        return null;
+    }
+
 }
