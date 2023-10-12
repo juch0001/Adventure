@@ -5,7 +5,3 @@ public class Main {
         ui.startGame();
     }
 }
-
-//Enemy drop weapon
-//Enemy disappear
-//Fjerne ubrugte metoder

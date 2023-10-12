@@ -17,21 +17,16 @@ public class Player {
         this.currentWeapon = null;
     }
 
-
     //TODO Attack
     public AttackEnum attack(Enemy enemy) {
         playerDamage = currentWeapon.getDamage();
-
         enemy.hitEnemy(playerDamage);
 
         if (enemy.getEnemyHealth() <= 0) {
             return AttackEnum.ENEMY_DEAD;
-
         } else {
             enemyDamage = currentRoom.findEnemyByName(enemy.getEnemyName()).getEnemyWeapon().getDamage();
-
             this.health -= enemyDamage;
-
         }
         return (currentWeapon instanceof MeleeWeapon) ? AttackEnum.ATTACK_MELEE : AttackEnum.ATTACK_RANGED;
     }
@@ -57,9 +52,16 @@ public class Player {
         }if (health > 100) {
             health = 100;
         }else if (health <= 0) {
-            return AttackEnum.PLAYER_DEAD;
+            playerIsDead();
         }
         return null;
+    }
+
+    public boolean playerIsDead() {
+        if (health <= 0) {
+            return true;
+        }
+        return false;
     }
 
     public String printHealthDescription() {

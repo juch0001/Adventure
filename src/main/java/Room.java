@@ -22,26 +22,7 @@ public class Room {
         this.enemyList = new ArrayList<>();
     }
 
-    public Room showAvailableItems(Room room) {
-        ArrayList<Item> itemList = room.getItemList();
-        if (!itemList.isEmpty()) {
-            System.out.println("Available items in the room: ");
-            int index = 1;
-
-            for (Item item : itemList) {
-                System.out.println(index + ". " + item.getItemName() + item.getItemDescription());
-                index++;
-            }
-        } else {
-            System.out.println("There are no items in this room.");
-        }
-        return null;
-    }
-
-    public void addItem(Item item) {
-        itemList.add(item);
-    }
-
+    //TODO Enemy
     public void addEnemy (Enemy enemy) {
      enemyList.add(enemy);
     }
@@ -63,22 +44,40 @@ public class Room {
         return enemyList;
     }
 
+    //TODO Item
+    public void addItem(Item item) {
+        itemList.add(item);
+    }
+
     public ArrayList<Item> getItemList() {
         return itemList;
     }
 
-    //Todo get og set for navn
+    public Room showAvailableItems(Room room) {
+        ArrayList<Item> itemList = room.getItemList();
+        if (!itemList.isEmpty()) {
+            System.out.println("Available items in the room: ");
+            int index = 1;
+
+            for (Item item : itemList) {
+                System.out.println(index + ". " + item.getItemName() + item.getItemDescription());
+                index++;
+            }
+        } else {
+            System.out.println("There are no items in this room.");
+        }
+        return null;
+    }
+
+    //TODO GET og SET variabler
     public String getName() {
         return name;
     }
 
-
-    //Todo get og set for beskrivelse
     public String getDescription() {
         return description;
     }
 
-    //Todo get og set for nord
     public Room getNorth() {
         return north;
     }
@@ -86,7 +85,6 @@ public class Room {
         this.north=north;
     }
 
-    //Todo get og set for syd
     public Room getSouth() {
         return south;
     }
@@ -94,7 +92,6 @@ public class Room {
         this.south=south;
     }
 
-    //Todo get og set for øst
     public Room getEast() {
         return east;
     }
@@ -102,7 +99,6 @@ public class Room {
         this.east=east;
     }
 
-    //Todo get og set for vest
     public Room getWest() {
         return west;
     }

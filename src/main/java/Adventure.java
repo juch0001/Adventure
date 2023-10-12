@@ -43,7 +43,7 @@ public class Adventure {
         return player.showAvailableItems(room);
     }
 
-    public void showAvalableEnemies (Room room) {
+    public void showAvailableEnemies(Room room) {
         List <Enemy> enemyList = room.getEnemyList();
 
         if (!enemyList.isEmpty()) {
@@ -86,6 +86,10 @@ public class Adventure {
 
     public void removeEnemy (Enemy enemyName) {
         getCurrentRoom().removeEnemy(enemyName);
+    }
+
+    public boolean getPlayerIsDead() {
+        return player.playerIsDead();
     }
 
 }

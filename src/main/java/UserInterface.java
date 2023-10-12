@@ -60,15 +60,24 @@ public class UserInterface {
                 System.out.println("To go south, write 'go south'. To go north, write 'go north'. To go east, write 'go east'." +
                         " To go west, write 'go west'.");
                 System.out.println("'look' to see surroundings and items in the room.");
-                System.out.println("Exit ");
+                System.out.println("write 'inventory' or 'inv' to see the items in your inventory.");
+                System.out.println("write 'take' followed by the name of the item, to pick up an item.");
+                System.out.println("write 'drop' followed by the name of the item you would like to drop.");
+                System.out.println("write 'eat' followed by the name of the food you would like to eat.");
+                System.out.println("write 'health' to get your health.");
+                System.out.println("write 'equip' followed by the name of the weapon you would like to equip.");
+                System.out.println("write 'attack' followed by the name of the enemy you would like to attack.");
+                System.out.println("write 'exit' to leave the game.");
             } else if (menu.equals("exit")) {
                 System.out.println("We hope to see you again soon");
                 runProgram = false;
             } else if (menu.equals("look")) {
                 Room currentRoom = adventure.getCurrentRoom();
+                System.out.println();
                 System.out.println(currentRoom.getDescription());
                 adventure.showAvailableItems(currentRoom);
-                adventure.showAvalableEnemies(currentRoom);
+                System.out.println();
+                adventure.showAvailableEnemies(currentRoom);
             } else if (menu.contains("go")) {
                 adventure.directions(menu);
             } else if (menu.equals("inventory") || menu.equals("inv") || menu.equals("invent")) {
@@ -137,13 +146,14 @@ public class UserInterface {
                         System.out.println("You defeated " + enemyName + "!");
                         adventure.dropWeapon(enemy.getEnemyWeapon());
                         adventure.removeEnemy(enemy);
-                    } else if (attackPossible == AttackEnum.PLAYER_DEAD) {
-                        System.out.println("You have been defeated");
-                        runProgram = false;
                     }
                 } else {
                     System.out.println("No enemy found with the name: " + enemyName);
                 }
+            } if (adventure.getPlayerIsDead()) {
+                System.out.println();
+                System.out.println("You have died!");
+                runProgram = false;
             }
         }
     }

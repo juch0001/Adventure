@@ -9,15 +9,12 @@ public class Item {
         this.itemDescription = itemDescription;
     }
 
-
-    //TODO get og set for ItemName
+    //TODO GET og SET
     public String getItemName() {
         return itemName;
     }
 
-    //TODO get og set for ItemDescription
     public String getItemDescription(){
         return itemDescription;
     }
-
 }

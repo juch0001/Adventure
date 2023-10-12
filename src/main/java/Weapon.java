@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Weapon extends Item{
     private int damage;
 
