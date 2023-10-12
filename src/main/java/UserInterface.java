@@ -4,6 +4,7 @@ public class UserInterface {
     public static final String BLUE_BOLD = "\033[1;34m"; //farvekode til blå
     public static final String BLUE_UNDERLINED = "\033[4;34m"; //blå linje under tekst
     public static final String BLACK_BOLD = "\033[1;30m"; //Markeret sort (hvis man har hvid skærm)
+    public static final String RESET = "\033[0m";
 
     public static void printMouseArt() {
         String mouseArt =
@@ -39,11 +40,11 @@ public class UserInterface {
         adventure.buildMap();
 
         //TODO navngiv spil
-        System.out.println(BLUE_UNDERLINED + BLUE_BOLD + "Welcome to the Mouse Trap." + "\u001B[0m");
+        System.out.println(BLUE_UNDERLINED + BLUE_BOLD + "Welcome to the Mouse Trap." + RESET);
         printMouseArt();
         System.out.println(BLACK_BOLD + "Directions: You enter a labyrinth as a mouse, and need to find your way to the holy grail of cheese." +
                 "\nYou can go north, east, south or west." +
-                "\nTo choose a direction, write 'go' and the direction you would like to go." + "\u001B[0m");
+                "\nTo choose a direction, write 'go' and the direction you would like to go." + RESET);
         System.out.println("Write help if you need help.");
 
         boolean runProgram = true;
@@ -76,9 +77,9 @@ public class UserInterface {
                 String[] command = menu.split(" ");
                 boolean successTake = adventure.takeItem(command[1]);
                 if (successTake) {
-                    System.out.println("You have taken " + command[1]);
+                    System.out.println(BLACK_BOLD + "You have taken " + command[1] + RESET);
                 } else {
-                    System.out.println(" You cant take this item");
+                    System.out.println(BLACK_BOLD + " You cant take this item" + RESET);
                 }
             } else if (menu.startsWith("drop")) {
                 adventure.dropItem(menu.substring(5));
@@ -87,7 +88,7 @@ public class UserInterface {
                 FoodEnum isFood = adventure.eatFood(command[1]);
                 if (isFood == FoodEnum.FOOD) {
                     System.out.println("You have eaten: " + command[1]);
-                    System.out.println("Your health in points: " + adventure.getHealth());
+                    System.out.println(BLUE_BOLD + "Your health in points: " + adventure.getHealth() + RESET);
                     System.out.println(adventure.printHealthDescription());
                 } else if (isFood == FoodEnum.NOT_FOUND) {
                     System.out.println(command[1] + " is not available.");
@@ -95,7 +96,7 @@ public class UserInterface {
                     System.out.println("You cannot eat " + command[1]);
                 }
             } else if (menu.contains("health")) {
-                System.out.println("Your health in points: " + adventure.getHealth());
+                System.out.println(BLUE_BOLD + "Your health in points: " + adventure.getHealth() + RESET);
                 System.out.println(adventure.printHealthDescription());
 
             } else if (menu.contains("equip")) {
@@ -143,7 +144,7 @@ public class UserInterface {
                 } else {
                     System.out.println("No enemy found with the name: " + enemyName);
                 }
-                        }
-                    }
-                }
             }
+        }
+    }
+}

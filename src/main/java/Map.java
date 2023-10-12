@@ -133,4 +133,5 @@ public class Map {
     public ArrayList<Enemy> getEnemyList() {
         return currentRoom.getEnemyList();
     }
+
 }

@@ -30,6 +30,7 @@ public class Adventure {
         return player.showInventory();
     }
 
+
     public boolean takeItem(String itemName) {
         return player.takeItem(itemName);
     }
@@ -62,6 +63,7 @@ public class Adventure {
     public int getHealth() {
         return player.getHealth();
     }
+    
 
     public FoodEnum eatFood(String food) {
         return player.eatFood(food);
@@ -75,7 +77,7 @@ public class Adventure {
         return player.getPlayerDamage();
     }
 
-    public Enemy dropWeapon (Weapon enemyWeapon) {
+   public Enemy dropWeapon (Weapon enemyWeapon) {
         map.weaponList.remove(enemyWeapon);
         map.getCurrentRoom().addItem(enemyWeapon);
         System.out.println("Enemy has dropped " + enemyWeapon.getItemName());
