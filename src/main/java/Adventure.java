@@ -76,6 +76,9 @@ public class Adventure {
     public int getPlayerDamage() {
         return player.getPlayerDamage();
     }
+    public int getEnemyDamage() {
+        return player.getEnemyDamage();
+    }
 
    public Enemy dropWeapon (Weapon enemyWeapon) {
         map.weaponList.remove(enemyWeapon);

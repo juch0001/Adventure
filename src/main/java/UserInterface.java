@@ -107,7 +107,6 @@ public class UserInterface {
             } else if (menu.contains("health")) {
                 System.out.println(BLUE_BOLD + "Your health in points: " + adventure.getHealth() + RESET);
                 System.out.println(adventure.printHealthDescription());
-
             } else if (menu.contains("equip")) {
                 String[] command = menu.split(" ");
                 WeaponEnum isWeapon = adventure.equipWeapon(command[1]);
@@ -124,19 +123,22 @@ public class UserInterface {
                 if (enemy != null) {
                     AttackEnum attackPossible = adventure.getPlayer().attack(enemy);
                     if (attackPossible == AttackEnum.ATTACK_MELEE){
+                        System.out.println();
                         System.out.println("You have attacked " + enemyName);
                         System.out.println("You dealt " + adventure.getPlayerDamage() + " damage to " + enemyName + ".");
-                        System.out.println("Your health: " + adventure.getPlayer().getHealth());
                         if (enemy.getEnemyHealth() > 0)
-                            System.out.println(enemyName + "health: " + enemy.getEnemyHealth());
-
+                            System.out.println(enemyName + " health: " + enemy.getEnemyHealth());
+                            System.out.println(enemyName + " has dealt " + adventure.getEnemyDamage() + " damage to you.");
+                            System.out.println("Your health: " + adventure.getPlayer().getHealth());
+                            System.out.println(adventure.printHealthDescription());
                     } else if (attackPossible == AttackEnum.ATTACK_RANGED) {
                         System.out.println("You have shot " + enemyName);
                         System.out.println("You dealt " + adventure.getPlayerDamage() + "damage" + enemyName + ".");
-                        System.out.println("Your health: " + adventure.getPlayer().getHealth());
                         if (enemy.getEnemyHealth() > 0)
                             System.out.println(enemyName + " health: " + enemy.getEnemyHealth());
-
+                        System.out.println(enemyName + " has dealt " + adventure.getEnemyDamage() + " damage to you.");
+                        System.out.println("Your health: " + adventure.getPlayer().getHealth());
+                        System.out.println(adventure.printHealthDescription());
                     } else if (attackPossible == AttackEnum.NO_AMMO) {
                         System.out.println("You have no ammo left. ");
                     } else if (attackPossible == AttackEnum.WEAPON_NOT_FOUND) {

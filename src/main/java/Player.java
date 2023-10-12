@@ -21,7 +21,6 @@ public class Player {
     public AttackEnum attack(Enemy enemy) {
         playerDamage = currentWeapon.getDamage();
         enemy.hitEnemy(playerDamage);
-
         if (enemy.getEnemyHealth() <= 0) {
             return AttackEnum.ENEMY_DEAD;
         } else {
@@ -249,7 +248,6 @@ public class Player {
         return inventory;
     }
 
-
     public int getHealth() {
         return health;
     }
@@ -260,5 +258,9 @@ public class Player {
 
     public int getPlayerDamage() {
         return playerDamage;
+    }
+
+    public int getEnemyDamage() {
+        return enemyDamage;
     }
 }

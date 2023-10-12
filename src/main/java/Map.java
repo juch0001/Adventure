@@ -112,7 +112,7 @@ public class Map {
         room10.addItem(new Food("Brie", " - " + "Innocent looking brie.", -100));
     }
 
-    Weapon shoes = new MeleeWeapon("Shoes", " - " + "Shoes the human was wearing", 100);
+    Weapon shoes = new MeleeWeapon("Shoes", " - " + "Shoes the human was wearing", 15);
     Weapon claws = new MeleeWeapon("Claws"," - " + "Far reaching legs with sharp claws", 15);
     Weapon book = new MeleeWeapon("Book", " - " + "Long arms with a book, it might get worn out after a while", 20);
 
