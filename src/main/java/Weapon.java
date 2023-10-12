@@ -1,6 +1,6 @@
 public abstract class Weapon extends Item{
     private int damage;
-    private int ammo;
+
 
     public Weapon ( String itemName, String itemDescription, int damage) {
         super(itemName, itemDescription);
@@ -9,9 +9,5 @@ public abstract class Weapon extends Item{
 
     public int getDamage() {
         return damage;
-    }
-
-    public int getAmmo() {
-        return ammo;
     }
 }

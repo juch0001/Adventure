@@ -46,7 +46,6 @@ public class Room {
      enemyList.add(enemy);
     }
 
-
     public Enemy findEnemyByName (String enemyName) {
         for (Enemy enemy : enemyList) {
             if (enemy.getEnemyName().equalsIgnoreCase(enemyName)){
@@ -55,18 +54,6 @@ public class Room {
         }
         return null;
     }
-
-    public void showAvailableEnemies () {
-        if (!enemyList.isEmpty()) {
-            System.out.println("Enemies in the room: ");
-            for (Enemy enemy : enemyList) {
-                System.out.println("- " + enemy.getEnemyName());
-            }
-        } else {
-            System.out.println("There are no enemies in this room.");
-        }
-    }
-
 
     public ArrayList<Enemy> getEnemyList() {
         return enemyList;

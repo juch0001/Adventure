@@ -6,9 +6,6 @@ public class Enemy {
     private int enemyHealth;
     private Weapon enemyWeapon;
 
-    private ArrayList <Enemy> enemyList = new ArrayList<>();
-
-
     public Enemy(String enemyName, String enemyDescription,Weapon enemyWeapon, int enemyHealth) {
         this.enemyName = enemyName;
         this.enemyDescription = enemyDescription;
@@ -16,7 +13,7 @@ public class Enemy {
         this.enemyWeapon = enemyWeapon;
     }
 
-    public void setEnemyHealth(int damage) {
+    public void hitEnemy(int damage) {
         this.enemyHealth -= damage;
     }
 
@@ -32,21 +29,7 @@ public class Enemy {
         return enemyHealth;
     }
 
-    public AttackEnum attackPlayer (Player player) {
-        if (enemyWeapon == null){
-            System.out.println("no weapon");
-            return AttackEnum.NO_AMMO;
-        }
-        int enemyDamage = enemyWeapon.getDamage();
-        player.receiveDamage(enemyDamage);
-        if (player.getHealth() <=0 ){
-            System.out.println("You have been defeated");
-        }
-        return (enemyWeapon instanceof MeleeWeapon) ? AttackEnum.ATTACK_MELEE : AttackEnum.ATTACK_RANGED;
-    }
-
     public Weapon getEnemyWeapon() {
         return enemyWeapon;
     }
-
 }

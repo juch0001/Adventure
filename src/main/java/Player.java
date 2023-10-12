@@ -5,58 +5,16 @@ public class Player {
 
     private Room currentRoom;
     private int health;
-    private int enemyHealth;
     private int playerDamage;
-    private Weapon enemyDamage;
+    private int enemyDamage;
     private Weapon currentWeapon;
-    private Enemy currentEnemy;
     private ArrayList<Item> inventory;
-    private ArrayList<Weapon> weaponList;
 
     public Player(Room currentRoom) {
         this.inventory = new ArrayList<>();
         this.currentRoom = currentRoom;
         this.health = 100;
-        this.enemyHealth = 100 ;
         this.currentWeapon = null;
-        this.currentEnemy = null;
-    }
-
-
-
-    //TODO Enemy attack
-   /* public AttackEnum enemyAttack(Enemy enemy) {
-        if (enemy attack after player) {
-
-            int playerDamage = currentWeapon.getDamage();
-            int enemyDamage = currentEnemy.getEnemyWeapon().getDamage();
-
-            getHealth(enemyDamage);
-            this.health -= enemyDamage;
-
-
-        } else if (enemy.getEnemyHealth() > 0){
-            System.out.println("You damage to " + enemy.getEnemyName() + ".");
-
-
-            int enemyDamage = currentWeapon.getDamage();
-
-
-            setHealth(enemyDamage);
-        this.health -= enemyDamage;
-
-        return AttackEnum.ATTACKED;
-
-        }else if(this.health <= 0){
-            System.out.println("You have been defeated.");
-            // TODO Reset spillet
-            return AttackEnum.PLAYER_DEAD;
-        }
-        return null;
-    }*/
-
-    public void receiveDamage (int damage) {
-        this.health -= damage;
     }
 
 
@@ -64,29 +22,16 @@ public class Player {
     public AttackEnum attack(Enemy enemy) {
         playerDamage = currentWeapon.getDamage();
 
-        enemy.setEnemyHealth(playerDamage);
-        this.enemyHealth -= playerDamage;
+        enemy.hitEnemy(playerDamage);
 
-        if (enemyHealth <= 0) {
+        if (enemy.getEnemyHealth() <= 0) {
             return AttackEnum.ENEMY_DEAD;
-            //TODO Enemy drop weapon
-
-            currentEnemy.getEnemyWeapon().remove(weaponList);
-            currentRoom.addItem(currentEnemy.getEnemyWeapon());
-            System.out.println("Enemy has dropped " + currentEnemy.getEnemyWeapon());
-
-            //TODO Enemy disappears
 
         } else {
-            enemyDamage = currentEnemy.getEnemyWeapon();
+            enemyDamage = currentRoom.findEnemyByName(enemy.getEnemyName()).getEnemyWeapon().getDamage();
 
-
-            setHealth(enemyDamage);
             this.health -= enemyDamage;
 
-            if (health <= 0) {
-                return AttackEnum.PLAYER_DEAD;
-            }
         }
         return (currentWeapon instanceof MeleeWeapon) ? AttackEnum.ATTACK_MELEE : AttackEnum.ATTACK_RANGED;
     }
@@ -106,14 +51,15 @@ public class Player {
     }
 
     //TODO Health
-    public void setHealth(Item item) {
+    public AttackEnum setHealth(Item item) {
         if (item instanceof Food) {
             this.health += ((Food) item).getHealthPoints();
         }if (health > 100) {
             health = 100;
-        } else if (item instanceof Weapon) {
-            this.health -= currentEnemy.getEnemyWeapon();
+        }else if (health <= 0) {
+            return AttackEnum.PLAYER_DEAD;
         }
+        return null;
     }
 
     public String printHealthDescription() {

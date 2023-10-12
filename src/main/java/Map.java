@@ -35,7 +35,7 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(new Item("Flowerbomb", " - A bomb which sprays a soothing flower smell to distract enemies and lower their speed."));
-        room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , 20));
+        room1.addItem(new MeleeWeapon("Sword" , " - A sharp sword for defense and combat." , 100));
         room1.addItem(new Food("Cheese", " - A tasty slice of cheese for a hungry mouse.", 10));
 
         //Room 2
@@ -45,9 +45,9 @@ public class Map {
         room2.addItem(new Item("Map", " - A map to help you navigate the maze."));
         room2.addItem(new Food("Carrot" , " - A fresh and crunchy carrot stick.", 10));
         room2.addItem(new Food("Cheese" , " - A piece of cheese gone bad. Yuck! ", -30));
-        room2.addItem(new RangedWeapon("Tail" , "Whip-like tail." , 20, 5));
+        room2.addItem(new RangedWeapon("Tail" , " - Whip-like tail." , 20, 5));
         room2.addEnemy(new Enemy("Feet", "A humans feet, tippy tapping around", shoes, 100));
-        room2.addItem(new MeleeWeapon("Shoes", "The shoes the human was wearing", 15));
+        room2.addItem(new MeleeWeapon("Shoes", " - The shoes the human was wearing", 15));
 
         //Room 3
         room3.setWest(room2);
@@ -113,6 +113,16 @@ public class Map {
         room10.addItem(new Food("Brie", " - +" + "Innocent looking brie.", -100));
     }
 
+    Weapon shoes = new MeleeWeapon("Shoes", " - Shoes the human was wearing", 15);
+    Weapon claws = new MeleeWeapon("Claws"," - Far reaching legs with sharp claws", 15);
+    Weapon book = new MeleeWeapon("Book", " - Long arms with a book, it might get worn out after a while", 20);
+    public Map() {
+        this.weaponList = new ArrayList<>();
+        weaponList.add(shoes);
+        weaponList.add(claws);
+        weaponList.add(book);
+    }
+
     public Room getStarterRoom() {
         return currentRoom;
     }
@@ -120,9 +130,7 @@ public class Map {
     public Room getCurrentRoom() {
         return currentRoom;
     }
-
-    Weapon shoes = new MeleeWeapon("Shoes", "Shoes the human was wearing", 15);
-    Weapon claws = new MeleeWeapon("Claws","Far reaching legs with sharp claws", 15);
-    Weapon book = new MeleeWeapon("Book", "Long arms with a book, it might get worn out after a while", 20);
-
+    public ArrayList<Enemy> getEnemyList() {
+        return currentRoom.getEnemyList();
+    }
 }

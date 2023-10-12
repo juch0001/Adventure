@@ -3,6 +3,7 @@ import java.util.List;
 public class Adventure {
 
     private Map map = new Map();
+    private Enemy enemy;
     private Player player;
 
     public Adventure(){
@@ -43,11 +44,11 @@ public class Adventure {
     }
 
     public void showAvalableEnemies (Room room) {
-        List <Enemy> enemies = room.getEnemyList();
+        List <Enemy> enemyList = room.getEnemyList();
 
-        if (!enemies.isEmpty()) {
+        if (!enemyList.isEmpty()) {
             System.out.println("Enemies in this room: ");
-            for (Enemy enemy : enemies) {
+            for (Enemy enemy : enemyList) {
                 System.out.println(enemy.getEnemyName() + "- " + enemy.getEnemyDescription());
             }
         } else {
@@ -69,10 +70,6 @@ public class Adventure {
 
     public WeaponEnum equipWeapon(String weapon) {
         return player.equipWeapon(weapon);
-    }
-
-    public void resetGame() {
-        buildMap();
     }
 
     public int getPlayerDamage() {
